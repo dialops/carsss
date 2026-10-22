@@ -2,7 +2,7 @@
 
 Интерактивный гайд по б/у премиальным машинам на Кипре в бюджете €15–20k: Lexus, BMW, MINI, Audi, Mercedes-Benz, Volvo, Tesla.
 
-**Открыть гайд:** https://dialops.github.io/cyprus-premium-cars/
+**Открыть гайд:** https://dialops.github.io/carsss/
 
 Внутри:
 - сравнение 15 моделей: годы в бюджете, цены по объявлениям (октябрь 2026), реальный расход, road tax, надёжность коробок;
