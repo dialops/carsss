@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Сравнение б/у Lexus, BMW, MINI, Audi, Mercedes, Volvo и Tesla до €20 000 на Кипре: цены, расход, налог, отзывы владельцев, обслуживание и подводные камни.">
+<meta name="description" content="Простой гайд по б/у премиальным машинам до €20 000 на Кипре: Lexus, BMW, Audi, MINI, Mercedes, Tesla — цены, расходы, разгон, разбор моделей и как не попасться на обман.">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Премиум до €20 000 на Кипре</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
-/* Layout: motorway-sign hero → verdict → filter bar → comparison table → model cards → running-cost calculator → pitfalls → checklist → sources */
+/* Layout: sign hero → picks → primer (shapes, gearboxes, diesel, words) → age & mileage limits with checker → models (plain-language table + analytic cards) → yearly-cost calculator in steps → payments & road tax → Cyprus specifics → scams & how to avoid them → freshness note */
 :root{
   --bg:#F1F4F7; --surface:#FFFFFF; --ink:#13181E; --muted:#56626F; --line:#D9E0E7;
   --sign:#1C4F9C; --sign-ink:#FFFFFF; --plate:#F2C200; --plate-ink:#141414;
@@ -36,26 +36,32 @@
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px;display:flex;flex-direction:column;gap:44px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px;display:flex;flex-direction:column;gap:48px}
 h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.01em}
 h1{font-size:clamp(26px,4.4vw,42px);line-height:1.12;font-weight:700}
 h2{font-size:clamp(19px,2.6vw,25px);font-weight:700;line-height:1.2}
 h3{font-size:16px;font-weight:500;line-height:1.3}
 p{margin:0}
 a{color:var(--accent)}
-.lede{color:var(--muted);max-width:62ch;font-size:16px}
+.lede{color:var(--muted);max-width:66ch;font-size:16px}
 .eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .num{font-variant-numeric:tabular-nums}
 section{display:flex;flex-direction:column;gap:18px}
 .sec-head{display:flex;flex-direction:column;gap:6px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.panel p,.panel li{font-size:14.5px}
+.panel ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px}
+.hint{font-size:12.5px;color:var(--muted)}
 
 /* hero */
 .hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;align-items:center}
 .hero-text{display:flex;flex-direction:column;gap:14px;min-width:0}
+.fresh{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--good);background:var(--good-soft);border-radius:999px;padding:4px 12px;width:fit-content}
+.fresh::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--good)}
 .facts{display:flex;flex-wrap:wrap;gap:8px}
 .fact{font-size:13px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;color:var(--muted)}
 .fact b{color:var(--ink);font-weight:600}
-.sign{background:var(--sign);color:var(--sign-ink);border-radius:10px;padding:18px;border:3px solid var(--sign-ink);outline:2px solid var(--sign);display:flex;flex-direction:column;gap:10px;font-family:var(--f-body)}
+.sign{background:var(--sign);color:var(--sign-ink);border-radius:10px;padding:18px;border:3px solid var(--sign-ink);outline:2px solid var(--sign);display:flex;flex-direction:column;gap:10px}
 .sign-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:8px}
 .sign-row:last-child{border-bottom:0;padding-bottom:0}
 .sign-badge{font-family:var(--f-display);font-size:13px;background:#0F7A3A;color:#fff;border:2px solid #fff;padding:2px 8px;border-radius:4px}
@@ -64,51 +70,78 @@ section{display:flex;flex-direction:column;gap:18px}
 .sign-km{font-family:var(--f-display);font-size:20px}
 .sign-note{font-size:12px;opacity:.9}
 
-/* plate */
 .plate{display:inline-flex;align-items:center;gap:6px;background:var(--plate);color:var(--plate-ink);font-family:var(--f-mono);font-weight:600;font-size:13px;padding:2px 9px 2px 5px;border-radius:4px;border:1.5px solid #141414;white-space:nowrap}
 .plate::before{content:"CY";font-size:9px;background:#1C4F9C;color:#fff;padding:1px 3px;border-radius:2px;letter-spacing:.04em}
 
-/* picks */
 .picks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.pick{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.pick{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .pick .label{font-family:var(--f-mono);font-size:12px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
 .pick p{color:var(--muted);font-size:14px}
 .pick h3{font-size:17px}
 
-/* controls */
-.controls{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+/* primer */
+.shapes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.shape{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.shape svg{width:100%;height:auto;max-width:100%;color:var(--accent)}
+.shape .ex{font-size:12.5px;color:var(--muted)}
+.shape p{font-size:14px}
+.shape .pm{display:flex;flex-direction:column;gap:2px;font-size:13px}
+.shape .pm span:first-child{color:var(--good)} .shape .pm span:last-child{color:var(--bad)}
+.shape.off{opacity:.72}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.gbox{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.gb{border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.gb b{font-size:14.5px}
+.gb p{font-size:13.5px;color:var(--muted)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:1px;flex:none}
+.d-good{background:var(--good)} .d-warn{background:var(--warn)} .d-bad{background:var(--bad)}
+.gloss{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 24px;margin:0}
+.gloss div{padding-block:8px;border-bottom:1px solid var(--line);font-size:14px}
+.gloss dt{font-weight:600;display:inline} .gloss dd{display:inline;margin:0;color:var(--muted)}
+
+/* limits */
+.bench{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.light{display:grid;grid-template-columns:130px minmax(0,1fr);gap:12px;padding-block:9px;border-bottom:1px solid var(--line);font-size:14px;align-items:start}
+.light:last-child{border-bottom:0}
+.light b{font-family:var(--f-mono);font-size:13px;font-weight:600}
+.checker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr)) minmax(0,2fr);gap:12px;align-items:end}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:13px;font-weight:600}
+.field .val{font-family:var(--f-mono);font-size:13px;color:var(--accent)}
+.field input[type=range]{width:100%;accent-color:var(--sign)}
+.field input[type=number],.field select{font:inherit;font-size:14px;padding:7px 9px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.verdict-pill{border-radius:10px;padding:10px 12px;font-size:14px;min-height:44px}
+.v-good{background:var(--good-soft)} .v-warn{background:var(--warn-soft)} .v-bad{background:var(--bad-soft)}
+.verdict-pill b{display:block}
+
+/* controls + table */
+.controls{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .group{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .group-label{font-size:12px;color:var(--muted);margin-right:2px}
 .chip{font:inherit;font-size:13px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .chip:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .toggle{display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer}
-select{font:inherit;font-size:13px;padding:5px 8px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
 .count{font-size:13px;color:var(--muted);margin-left:auto}
-
-/* table */
 .table-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
-table{border-collapse:collapse;width:100%;min-width:860px;font-size:13.5px}
+table{border-collapse:collapse;width:100%;min-width:960px;font-size:13.5px}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
-th{font-weight:600;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+th{font-weight:600;font-size:12px;color:var(--muted);letter-spacing:.02em;line-height:1.3;vertical-align:bottom}
 tbody tr:last-child td{border-bottom:0}
 td.r,th.r{text-align:right}
 td .m{font-weight:600}
 td .g{color:var(--muted);font-size:12px}
-.foot{font-size:12.5px;color:var(--muted)}
+td .big{font-weight:600;font-size:14.5px}
+td .nw{white-space:nowrap}
+.legend-table{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px;font-size:13.5px;color:var(--muted)}
+.legend-table b{color:var(--ink)}
 
-/* badges */
 .badge{display:inline-block;font-size:11.5px;font-weight:600;border-radius:999px;padding:2px 9px;white-space:nowrap}
 .fit-in{background:var(--good-soft);color:var(--good)}
-.fit-edge{background:var(--warn-soft);color:var(--warn)}
+.fit-edge,.fit-caveat{background:var(--warn-soft);color:var(--warn)}
 .fit-over{background:var(--bad-soft);color:var(--bad)}
-.risk-low{color:var(--good)} .risk-mid{color:var(--warn)} .risk-high{color:var(--bad)}
 .tag{display:inline-block;font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 7px}
-.rel{display:inline-flex;gap:3px;vertical-align:middle}
-.rel i{width:9px;height:9px;border-radius:2px;background:var(--line)}
-.rel i.on{background:var(--good)}
-.rel i.half{background:linear-gradient(90deg,var(--good) 50%,var(--line) 50%)}
+.word{display:inline-flex;align-items:center;font-size:13px;white-space:nowrap}
 
 /* cards */
 .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
@@ -121,78 +154,125 @@ td .g{color:var(--muted);font-size:12px}
 .price{font-family:var(--f-display);font-size:17px;white-space:nowrap;text-align:right}
 .price small{display:block;font-family:var(--f-body);font-size:11.5px;color:var(--muted);font-weight:400}
 .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;border-block:1px solid var(--line);padding-block:12px}
-.stat{display:flex;flex-direction:column;gap:2px;min-width:0}
-.stat span{font-size:11.5px;color:var(--muted)}
-.stat b{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
-.verdict{font-size:14.5px}
-.gearbox{font-size:13px;color:var(--muted)}
-.gearbox b{font-weight:600}
+.verdict{font-size:15px}
+.hard{background:var(--warn-soft);border-radius:10px;padding:10px 12px;font-size:14px}
+.hard b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--warn);margin-bottom:2px}
+.scores{display:flex;flex-direction:column;gap:6px;border-block:1px solid var(--line);padding-block:12px}
+.score{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr) 28px;gap:10px;align-items:center;font-size:13px}
+.score-track{height:8px;background:var(--bg);border-radius:4px;overflow:hidden}
+.score-fill{display:block;height:100%;background:var(--accent);border-radius:4px}
+.score .v{font-family:var(--f-mono);font-size:12px;color:var(--muted);text-align:right}
+.quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.quick div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.quick span{font-size:11.5px;color:var(--muted);line-height:1.3}
+.quick b{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.gearline{font-size:13.5px;display:flex;gap:4px;align-items:baseline}
+.accel{display:flex;flex-direction:column;gap:6px}
+.accel-head{display:flex;justify-content:space-between;gap:10px;font-size:13px;flex-wrap:wrap}
+.accel-head span{color:var(--muted)}
+.race{display:grid;grid-template-columns:86px minmax(0,1fr);gap:10px;align-items:center;font-size:12px;color:var(--muted)}
+.race .track{height:8px;background:var(--bg);border-radius:4px;overflow:hidden}
+.race .car{display:block;height:100%;background:var(--plate);border-radius:4px}
+.race .car.ref{background:var(--muted);opacity:.5}
 details{border-top:1px dashed var(--line);padding-top:10px}
 summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--accent);list-style:none}
 summary::-webkit-details-marker{display:none}
 summary::after{content:" +";}
 details[open] summary::after{content:" −";}
-.detail{display:flex;flex-direction:column;gap:14px;padding-top:12px;font-size:14px}
-.pc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.pc ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
-.pc h4,.detail h4{margin:0 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
-.plus li::marker{content:"+  ";color:var(--good);font-weight:700}
-.minus li::marker{content:"–  ";color:var(--bad);font-weight:700}
+.detail{display:flex;flex-direction:column;gap:16px;padding-top:12px;font-size:14px}
+.detail h4{margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.complaints{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.repair{display:flex;justify-content:space-between;gap:12px;padding-block:6px;border-bottom:1px solid var(--line);font-size:13.5px}
+.repair:last-child{border-bottom:0}
+.repair span:last-child{font-family:var(--f-mono);white-space:nowrap}
+.fit2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.fit2 div{border-radius:8px;padding:10px 12px;font-size:13.5px}
+.yes{background:var(--good-soft)} .no{background:var(--bad-soft)}
+.fit2 b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.yes b{color:var(--good)} .no b{color:var(--bad)}
 .listings{display:flex;flex-direction:column;gap:4px;font-family:var(--f-mono);font-size:12.5px}
 .avoid{background:var(--bad-soft);border-radius:8px;padding:10px 12px}
 .avoid h4{color:var(--bad)}
 
 /* calculator */
-.calc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:24px}
-.inputs{display:flex;flex-direction:column;gap:16px}
-.field{display:flex;flex-direction:column;gap:5px}
-.field label{font-size:13px;font-weight:600}
-.field .val{font-family:var(--f-mono);font-size:13px;color:var(--accent)}
-.field input[type=range]{width:100%;accent-color:var(--sign)}
-.field input[type=number]{font:inherit;font-size:14px;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
-.hint{font-size:12px;color:var(--muted)}
-.bars{display:flex;flex-direction:column;gap:8px;min-width:0}
-.bar-row{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr) 72px;gap:10px;align-items:center;font-size:13px}
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:28px}
+.inputs{display:flex;flex-direction:column;gap:18px}
+.step{display:flex;flex-direction:column;gap:10px}
+.step-title{display:flex;gap:10px;align-items:center;font-weight:600;font-size:14.5px}
+.step-n{font-family:var(--f-display);font-size:13px;width:26px;height:26px;border-radius:6px;background:var(--plate);color:var(--plate-ink);display:grid;place-items:center;border:1.5px solid #141414;flex:none}
+.presets{display:flex;flex-direction:column;gap:6px}
+.preset{font:inherit;text-align:left;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;padding:8px 12px;cursor:pointer;display:flex;flex-direction:column;gap:1px}
+.preset span{font-size:12px;color:var(--muted)}
+.preset[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.fine{border-top:1px dashed var(--line);padding-top:12px;display:flex;flex-direction:column;gap:12px}
+.fuels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.fuels .wide{grid-column:1 / -1}
+.scenario{background:var(--accent-soft);border-radius:12px;padding:14px 16px;font-size:14.5px;display:flex;flex-direction:column;gap:4px}
+.scenario b{font-size:15px}
+.results{display:flex;flex-direction:column;gap:12px;min-width:0}
+.results-head{display:flex;flex-direction:column;gap:4px}
+.results-head b{font-size:15px}
+.bar-row{display:grid;grid-template-columns:minmax(0,140px) minmax(0,1fr) 112px;gap:10px;align-items:center;font-size:13px}
 .bar-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bar-track{height:16px;background:var(--bg);border-radius:4px;overflow:hidden;display:flex}
 .bar-seg{height:100%}
-.seg-energy{background:var(--sign)}
-.seg-tax{background:var(--plate)}
-.seg-service{background:var(--muted);opacity:.55}
-.bar-val{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.seg-energy{background:var(--sign)} .seg-tax{background:var(--plate)} .seg-service{background:var(--muted);opacity:.55}
+.bar-val{text-align:right;font-variant-numeric:tabular-nums;line-height:1.25}
+.bar-val b{font-family:var(--f-mono);font-size:13px}
+.bar-val span{display:block;font-size:11.5px;color:var(--muted)}
 .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted)}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 
-/* pitfalls */
-.pits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.pit{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.pit.high{border-left-color:var(--bad)} .pit.mid{border-left-color:var(--warn)} .pit.info{border-left-color:var(--accent)}
-.pit p,.pit li{font-size:14px;color:var(--ink)}
-.pit ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
-.sev{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
-.high .sev{color:var(--bad)} .mid .sev{color:var(--warn)} .info .sev{color:var(--accent)}
+/* tax */
+.tax{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.taxcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.taxcard .q{font-family:var(--f-mono);font-size:12px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.taxcard p,.taxcard li{font-size:14px}
+.taxcard ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+.pay-table{display:flex;flex-direction:column}
+.pay{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr) minmax(0,1.4fr);gap:12px;padding-block:10px;border-bottom:1px solid var(--line);font-size:14px}
+.pay:last-child{border-bottom:0}
+.pay b{font-weight:600}
+.pay .amt{font-family:var(--f-mono);font-size:13px}
+.pay .when{color:var(--muted)}
 
-/* checklist */
+/* specifics */
+.pits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.pit{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.pit p,.pit li{font-size:14px}
+.pit ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+
+/* scams */
+.scams{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.scam{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.scam h3{font-size:15.5px}
+.scam .how{font-size:14px}
+.scam .fix{background:var(--good-soft);border-radius:8px;padding:9px 12px;font-size:14px}
+.scam .fix b{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--good);margin-bottom:2px}
 .steps{counter-reset:s;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px;margin:0;padding:0;list-style:none}
 .steps li{counter-increment:s;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:start;font-size:14px;padding-block:8px;border-bottom:1px solid var(--line)}
 .steps li::before{content:counter(s);font-family:var(--f-display);font-size:14px;width:28px;height:28px;border-radius:6px;background:var(--plate);color:var(--plate-ink);display:grid;place-items:center;border:1.5px solid #141414}
 .steps b{font-weight:600}
+.note{font-size:13.5px;color:var(--muted);background:var(--accent-soft);border-radius:10px;padding:14px 16px}
+.note b{color:var(--ink)}
 
-.sources{font-size:13px;color:var(--muted);columns:2;column-gap:28px}
-.sources li{margin-bottom:5px;break-inside:avoid}
-.note{font-size:13px;color:var(--muted);background:var(--accent-soft);border-radius:10px;padding:12px 14px}
-
+@media (max-width:900px){
+  .shapes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gbox,.tax,.pits{grid-template-columns:minmax(0,1fr)}
+}
 @media (max-width:860px){
-  .hero,.calc{grid-template-columns:minmax(0,1fr)}
-  .picks,.cards,.pits,.steps{grid-template-columns:minmax(0,1fr)}
-  .sources{columns:1}
-  .controls{position:static}
+  .hero,.calc,.bench{grid-template-columns:minmax(0,1fr)}
+  .picks,.cards,.scams,.steps,.grid2,.gloss,.legend-table{grid-template-columns:minmax(0,1fr)}
+  .checker{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .checker .verdict-pill{grid-column:1 / -1}
 }
 @media (max-width:480px){
-  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .pc{grid-template-columns:minmax(0,1fr)}
-  .bar-row{grid-template-columns:minmax(0,110px) minmax(0,1fr) 64px}
+  .shapes{grid-template-columns:minmax(0,1fr)}
+  .fit2,.quick{grid-template-columns:minmax(0,1fr)}
+  .score{grid-template-columns:minmax(0,120px) minmax(0,1fr) 28px}
+  .bar-row{grid-template-columns:minmax(0,96px) minmax(0,1fr) 96px}
+  .light{grid-template-columns:100px minmax(0,1fr)}
+  .pay{grid-template-columns:minmax(0,1fr)}
   .count{margin-left:0}
 }
 @media (prefers-reduced-motion:no-preference){.card{transition:border-color .15s}.card:hover{border-color:var(--muted)}}
@@ -203,76 +283,207 @@ details[open] summary::after{content:" −";}
 
 <header class="hero">
   <div class="hero-text">
-    <span class="eyebrow">Кипр · б/у рынок · октябрь 2026</span>
+    <span class="fresh">Актуально на 22 октября 2026</span>
     <h1>Премиум до €20&nbsp;000 на Кипре</h1>
-    <p class="lede">15 моделей Lexus, BMW, MINI, Audi, Mercedes, Volvo и Tesla, которые реально найти на острове в этом бюджете. Годы, цены по живым объявлениям, расход, налог, что пишут владельцы и как обслуживать. Сценарий: город Лимасол плюс регулярная трасса A1 до Никосии.</p>
+    <p class="lede">Кроссоверы Lexus, BMW и Audi, MINI, Mercedes A-класс, Audi A3 и Tesla Model 3 — машины, которые реально найти на острове в этом бюджете. Сначала короткая азбука для тех, кто не разбирается в машинах. Потом подробный разбор каждой модели: в чём сложность, на что жалуются владельцы, что ломается и сколько это стоит. В конце — как обычно обманывают при покупке.</p>
     <div class="facts">
-      <span class="fact">Бензин <b class="num">€1,76/л</b></span>
-      <span class="fact">Дизель <b class="num">€2,02/л</b></span>
-      <span class="fact">Электричество дома <b class="num">≈ €0,25–0,32/кВт·ч</b></span>
-      <span class="fact">Электромобили: road tax <b>€0</b></span>
+      <span class="fact">Бензин <b class="num">€1,76</b> за литр</span>
+      <span class="fact">Дизель <b class="num">€2,02</b> за литр</span>
+      <span class="fact">Электричество дома <b class="num">≈ €0,30</b> за кВт·ч</span>
     </div>
   </div>
   <div class="sign" role="img" aria-label="Дорожный указатель: трасса A1, Лимасол — Никосия 85 километров">
-    <div class="sign-row"><span class="sign-badge">A1</span><span class="sign-note">ваш основной маршрут</span></div>
+    <div class="sign-row"><span class="sign-city">Като Полемидия ↔ Олд Таун<small>2–3 раза в день</small></span><span class="sign-km num">≈11 км</span></div>
+    <div class="sign-row"><span class="sign-badge">A1</span><span class="sign-note">трасса в Никосию</span></div>
     <div class="sign-row"><span class="sign-city">Λευκωσία<small>Никосия</small></span><span class="sign-km num">85 км</span></div>
-    <div class="sign-row"><span class="sign-city">Туда и обратно<small>≈ 70% пути на 100–120 км/ч</small></span><span class="sign-km num">170 км</span></div>
+    <div class="sign-row"><span class="sign-city">IKEA и обратно<small>почти всё по трассе</small></span><span class="sign-km num">≈160 км</span></div>
   </div>
 </header>
 
 <section>
   <div class="sec-head">
-    <span class="eyebrow">Короткий вывод</span>
-    <h2>Что брать под ваш сценарий</h2>
+    <span class="eyebrow">Коротко</span>
+    <h2>Что брать</h2>
   </div>
   <div class="picks">
     <div class="pick">
-      <span class="label">Спокойствие</span>
+      <span class="label">Самый надёжный</span>
       <h3>Lexus NX 300h · 2015–2017</h3>
-      <p>Самый надёжный кроссовер в бюджете: гибрид без сцепления и турбины, мягкий и тихий. Цена на верхней границе, поэтому торгуйтесь. Если хватит размера хэтчбека, Lexus CT 200h стоит €13,5–16k и почти не ломается.</p>
+      <p>Купил и забыл: почти не ломается, мягкий и тихий, экономичный в пробках. Минус — цена на верхней границе, €19,5–23k, так что придётся торговаться.</p>
+    </div>
+    <div class="pick">
+      <span class="label">Лучший баланс</span>
+      <h3>BMW X1 · 2017–2020</h3>
+      <p>Большой выбор по €14–17k, просторный, хорошо едет по трассе. Важно выбрать правильную версию мотора и коробки, в разборе написано какую.</p>
+    </div>
+    <div class="pick">
+      <span class="label">Самый свежий за деньги</span>
+      <h3>Audi Q2 · 2021–2023</h3>
+      <p>Машины 3–5 лет за €18,5–21k: ничего свежее в этом бюджете нет. Компактный и удобный в городе, но тесноват сзади, а коробка не любит пробки.</p>
+    </div>
+    <div class="pick">
+      <span class="label">Для удовольствия</span>
+      <h3>MINI Cooper / Countryman</h3>
+      <p>Самые «весёлые» машины в списке. Cooper — для города и двоих, Countryman — то же настроение, но с местом для пассажиров и вещей.</p>
     </div>
     <div class="pick">
       <span class="label">Минимум расходов</span>
       <h3>Tesla Model 3 · 2019–2020</h3>
-      <p>€20–23k, налог €0, на 100 км уходит около €4–5 вместо €11–13 на бензине. Дорога до Никосии и обратно с запасом. Брать только если на вилле можно поставить зарядку: Supercharger'ов и сервиса Tesla на Кипре нет.</p>
+      <p>Для ваших коротких поездок по городу идеальна: месяц ваших поездок по Лимасолу обходится примерно в €37 вместо €95–135 на бензине, налог €0. Но нужна зарядка на вилле, а сервиса Tesla на Кипре нет.</p>
     </div>
     <div class="pick">
-      <span class="label">Премиум-ощущения</span>
-      <h3>BMW X1 F48 / MINI Countryman · 2018–2020</h3>
-      <p>Одна платформа, много предложений по €15–18k, практичный багажник и характер. Если важнее трасса, чем кроссовер, ищите BMW 320i F30 2016–2018 с автоматом ZF: лучшая машина для A1 в списке.</p>
+      <span class="label">Самый эффектный салон</span>
+      <h3>Mercedes A-класс · 2019–2021</h3>
+      <p>Два широких экрана и самая современная мультимедиа в бюджете, свежие годы за €15,5–22k. Небольшой хэтчбек, коробка терпимая, но не идеальная для пробок.</p>
+    </div>
+  </div>
+</section>
+
+<section id="primer">
+  <div class="sec-head">
+    <span class="eyebrow">Азбука</span>
+    <h2>Если вы не разбираетесь в машинах</h2>
+    <p class="lede">Четыре вещи, которые помогут читать объявления и разборы ниже: форма кузова, коробка передач, бензин или дизель и несколько терминов.</p>
+  </div>
+
+  <h3>Форма машины</h3>
+  <div class="shapes">
+    <div class="shape">
+      <svg viewBox="0 0 200 78" aria-hidden="true"><path fill="currentColor" d="M22 56 L22 30 Q23 22 32 20 L118 18 Q126 18 132 24 L148 36 L176 39 Q184 41 184 48 L184 56 Z"/><circle cx="52" cy="58" r="11" fill="var(--ink)"/><circle cx="52" cy="58" r="4" fill="var(--surface)"/><circle cx="154" cy="58" r="11" fill="var(--ink)"/><circle cx="154" cy="58" r="4" fill="var(--surface)"/></svg>
+      <b>Хэтчбек</b>
+      <span class="ex">MINI Cooper, Mercedes A-класс, Audi A3</span>
+      <p>Короткая машина, сзади одна большая дверь вместе со стеклом. Бывает 3-дверный и 5-дверный.</p>
+      <div class="pm"><span>+ легко парковаться, экономичный</span><span>− мало места сзади и в багажнике</span></div>
+    </div>
+    <div class="shape">
+      <svg viewBox="0 0 200 78" aria-hidden="true"><path fill="currentColor" d="M14 52 L14 24 Q15 14 26 13 L128 12 Q136 12 142 18 L158 32 L184 35 Q192 37 192 44 L192 52 Z"/><circle cx="50" cy="58" r="13" fill="var(--ink)"/><circle cx="50" cy="58" r="5" fill="var(--surface)"/><circle cx="158" cy="58" r="13" fill="var(--ink)"/><circle cx="158" cy="58" r="5" fill="var(--surface)"/></svg>
+      <b>Кроссовер</b>
+      <span class="ex">BMW X1 и X3, Lexus NX, Audi Q2/Q3, MINI Countryman</span>
+      <p>По сути высокий хэтчбек. Сидишь выше, легче садиться и выходить, лучше видно дорогу.</p>
+      <div class="pm"><span>+ удобно, просторно, практично</span><span>− расход и цена чуть выше</span></div>
+    </div>
+    <div class="shape">
+      <svg viewBox="0 0 200 78" aria-hidden="true"><path fill="currentColor" d="M14 52 L14 38 Q20 22 42 16 L128 12 Q136 12 142 18 L158 32 L184 35 Q192 37 192 44 L192 52 Z"/><circle cx="50" cy="58" r="13" fill="var(--ink)"/><circle cx="50" cy="58" r="5" fill="var(--surface)"/><circle cx="158" cy="58" r="13" fill="var(--ink)"/><circle cx="158" cy="58" r="5" fill="var(--surface)"/></svg>
+      <b>Купе-кроссовер</b>
+      <span class="ex">BMW X4</span>
+      <p>Кроссовер со скошенной назад крышей. Покупают за эффектный силуэт.</p>
+      <div class="pm"><span>+ выглядит дороже и спортивнее</span><span>− меньше места сзади, хуже обзор назад</span></div>
+    </div>
+    <div class="shape">
+      <svg viewBox="0 0 200 78" aria-hidden="true"><path fill="currentColor" d="M10 56 L10 44 Q12 38 26 37 L56 35 L74 20 Q78 17 86 17 L128 17 Q134 17 140 22 L154 34 L184 37 Q192 39 192 46 L192 56 Z"/><circle cx="50" cy="58" r="11" fill="var(--ink)"/><circle cx="50" cy="58" r="4" fill="var(--surface)"/><circle cx="158" cy="58" r="11" fill="var(--ink)"/><circle cx="158" cy="58" r="4" fill="var(--surface)"/></svg>
+      <b>Седан</b>
+      <span class="ex">Tesla Model 3</span>
+      <p>Багажник отделён от салона, крышка открывается без стекла. Длинный и низкий.</p>
+      <div class="pm"><span>+ тихо и устойчиво на трассе</span><span>− низкая посадка, менее практичен</span></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Коробка передач: спокойная или капризная</h3>
+    <p>Коробка передач решает, как машина переключает скорости. Для Лимасола с пробками и жарой важно одно: насколько коробка терпит медленную езду рывками. Ниже в разборе у каждой модели написано, какая у неё коробка.</p>
+    <div class="gbox">
+      <div class="gb"><b><span class="dot d-good"></span>Спокойная: гибридная или её нет</b><p>У Lexus гибридная коробка без сцепления, ломаться почти нечему. При резком разгоне мотор «гудит», это нормально. У Tesla коробки нет вообще.</p></div>
+      <div class="gb"><b><span class="dot d-good"></span>Спокойная: классический автомат</b><p>Плавный и долговечный, спокойно переносит пробки и жару. Есть у BMW X1 до 2019 года, у X4, у некоторых MINI и старого Audi Q3.</p></div>
+      <div class="gb"><b><span class="dot d-warn"></span>Капризная: робот</b><p>Быстрый и экономичный, но в пробках и жаре сцепление изнашивается быстрее, на малой скорости коробка может дёргаться. Ремонт €1 500–3 000. Есть у Audi Q2, у X1 после 2019 года и у MINI с 2018-го.</p></div>
+    </div>
+    <p class="hint">Mercedes A-класс — промежуточный случай: у него робот с «мокрым» сцеплением, он выносливее, чем у Audi. Как понять по объявлению: DCT, DSG, S tronic, «робот», «7-ступенчатая» — это робот. Steptronic, «6АКПП», «8АКПП» — классический автомат. Если не указано, спросите продавца.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Почему дизель здесь хуже бензина</h3>
+      <ul>
+        <li><b>Топливо дороже.</b> На Кипре дизель стоит €2,02 за литр, бензин €1,76. Дизель расходует на 15–25% меньше, но разница в цене литра почти всё съедает.</li>
+        <li><b>Не любит город.</b> У дизеля есть сажевый фильтр. Он очищается только на долгой быстрой езде, а в коротких поездках по Лимасолу забивается. Ремонт €800–2 000.</li>
+        <li><b>Дороже ремонт.</b> Топливная система дизеля сложнее и дороже, чем у бензинового мотора.</li>
+        <li><b>Налог выше.</b> К налогу на машину добавляется надбавка за дизель.</li>
+        <li><b>Труднее продать.</b> Европа уходит от дизелей, через несколько лет покупателей будет меньше.</li>
+      </ul>
+      <p class="hint">Дизель имеет смысл, только если вы проезжаете по трассе от 30–40 тыс. км в год.</p>
+    </div>
+    <div class="panel">
+      <h3>Слова, которые встретятся</h3>
+      <dl class="gloss">
+        <div><dt>Электромобиль</dt> <dd>— работает только от батареи, заряжается от розетки или зарядной станции. Налог €0.</dd></div>
+        <div><dt>Гибрид</dt> <dd>— бензиновый мотор плюс электромотор. Заряжается сам при торможении, розетка не нужна.</dd></div>
+        <div><dt>Run-flat</dt> <dd>— шины, на которых можно доехать после прокола. Из-за них подвеска жёстче, а сами шины дороже.</dd></div>
+        <div><dt>xDrive, ALL4, quattro</dt> <dd>— полный привод. Для Кипра не обязателен, но дороже в ремонте.</dd></div>
+        <div><dt>sDrive</dt> <dd>— привод на одну ось, обычная городская версия.</dd></div>
+        <div><dt>Пробег</dt> <dd>— сколько километров машина уже проехала.</dd></div>
+        <div><dt>Техосмотр (MOT)</dt> <dd>— обязательная проверка исправности: через 4 года после регистрации, потом раз в 2 года.</dd></div>
+        <div><dt>Импорт</dt> <dd>— машина, привезённая из Японии или Великобритании. Таких на Кипре большинство.</dd></div>
+        <div><dt>Рестайлинг</dt> <dd>— обновление модели посреди выпуска. Обычно в нём исправлены детские болезни.</dd></div>
+      </dl>
+    </div>
+  </div>
+<div class="panel" id="accel-explain">
+  <h3>Разгон: насколько резвой будет езда</h3>
+  <p>Разгон 0–100 км/ч — это сколько секунд машине нужно, чтобы с места разогнаться до 100 км/ч. Чем меньше число, тем легче обгонять на трассе и вливаться в поток.</p>
+  <div class="lights">
+    <div class="light"><b>около 11 с</b><span><b>Toyota Corolla</b> — точка отсчёта. Спокойно, хватает для города, но обгон на трассе надо планировать.</span></div>
+    <div class="light"><b>9–10 с</b><span>Чуть бодрее Corolla, разница ощутима на обгоне. Lexus NX, BMW X1 18i, Audi Q3, MINI Countryman.</span></div>
+    <div class="light"><b>8–9 с</b><span>Заметно бодрее: обгоны даются легко. Audi Q2 и A3, Mercedes A, BMW X3 и X4, MINI Cooper.</span></div>
+    <div class="light"><b>меньше 6 с</b><span>Вжимает в кресло. Tesla Model 3.</span></div>
+  </div>
+</div>
+</section>
+
+<section id="limits">
+  <div class="sec-head">
+    <span class="eyebrow">Ограничения</span>
+    <h2>Какие годы и пробег нормальны</h2>
+    <p class="lede">За год машина в среднем проезжает 12–15 тыс. км. Если пробег сильно меньше нормы, особенно у импорта, его могли скрутить. Если сильно больше — машина могла работать в такси или каршеринге.</p>
+  </div>
+  <div class="bench">
+    <div class="panel">
+      <h3>Пробег</h3>
+      <div>
+        <div class="light"><b><span class="dot d-good"></span>до 100 тыс. км</b><span>Спокойно, если есть история обслуживания.</span></div>
+        <div class="light"><b><span class="dot d-good"></span>100–150 тыс.</b><span>Норма для этого бюджета. Закладывайте €500–1 000 в год на ремонт.</span></div>
+        <div class="light"><b><span class="dot d-warn"></span>150–200 тыс.</b><span>Только с подтверждённой историей и со скидкой: скоро понадобятся крупные работы.</span></div>
+        <div class="light"><b><span class="dot d-bad"></span>больше 200 тыс.</b><span>Лучше пропустить. Исключение — Lexus-гибрид с полной историей.</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Год выпуска</h3>
+      <div>
+        <div class="light"><b><span class="dot d-good"></span>2020 и новее</b><span>Свежие машины. В бюджете — Audi Q2, BMW X1, MINI.</span></div>
+        <div class="light"><b><span class="dot d-good"></span>2016–2019</b><span>Основной выбор в этом бюджете.</span></div>
+        <div class="light"><b><span class="dot d-warn"></span>2014–2015</b><span>Только с оговорками: возраст крупных ремонтов, к тому же кипрская жара сушит резину и пластик. Сюда попадает BMW X4.</span></div>
+        <div class="light"><b><span class="dot d-bad"></span>до 2014</b><span>Не рассматриваем: дешевле, но ремонт съест экономию.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <h3>Проверьте объявление</h3>
+    <p>Выберите год и впишите пробег из объявления — покажу, нормальный ли он.</p>
+    <div class="checker">
+      <div class="field"><label for="ckYear">Год выпуска</label><select id="ckYear"></select></div>
+      <div class="field"><label for="ckKm">Пробег, км</label><input type="number" id="ckKm" min="0" step="1000" value="95000"></div>
+      <div class="verdict-pill" id="ckOut" aria-live="polite"></div>
     </div>
   </div>
 </section>
 
 <section id="compare">
   <div class="sec-head">
-    <span class="eyebrow">Сравнение</span>
-    <h2>Модели в бюджете</h2>
-    <p class="lede">Цены — по объявлениям на allcars.cy (агрегатор Bazaraki, дилеров и Facebook) на октябрь 2026. Расход — реальный, по отзывам владельцев, а не паспортный. Стоимость 100 км пересчитывается в калькуляторе ниже.</p>
+    <span class="eyebrow">Модели</span>
+    <h2>Разбор каждой модели</h2>
+    <p class="lede">Цены взяты из объявлений на Кипре. Траты на бензин посчитаны по реальному расходу, о котором пишут владельцы, а не по паспортному. Полный разбор каждой модели открывается в карточке.</p>
+  </div>
+  <div class="scenario">
+    <b>Ваш сценарий: много коротких поездок</b>
+    <span>Като Полемидия ↔ Олд Таун 2–3 раза в день — это поездки по 5–6 км, около 850 км в месяц. Мотор за такую поездку не успевает прогреться. Лучше всего с этим справляются гибриды Lexus и Tesla. Бензиновым машинам это даётся дороже, а для дизеля и «капризного» робота такой режим самый тяжёлый.</span>
   </div>
 
   <div class="controls" role="group" aria-label="Фильтры">
     <div class="group" id="f-body">
-      <span class="group-label">Кузов</span>
+      <span class="group-label">Форма</span>
       <button class="chip" data-v="all" aria-pressed="true">Все</button>
-      <button class="chip" data-v="compact" aria-pressed="false">Хэтч / седан</button>
       <button class="chip" data-v="suv" aria-pressed="false">Кроссовер</button>
-      <button class="chip" data-v="eco" aria-pressed="false">Электро / гибрид</button>
-    </div>
-    <div class="group" id="f-brand">
-      <span class="group-label">Бренд</span>
-      <select id="brand" aria-label="Бренд">
-        <option value="all">Все бренды</option>
-        <option>Lexus</option><option>BMW</option><option>MINI</option><option>Audi</option><option>Mercedes-Benz</option><option>Volvo</option><option>Tesla</option>
-      </select>
-    </div>
-    <div class="group">
-      <span class="group-label">Сортировка</span>
-      <select id="sort" aria-label="Сортировка">
-        <option value="price">По цене</option>
-        <option value="cost">По стоимости 100 км</option>
-        <option value="rel">По надёжности</option>
-      </select>
+      <button class="chip" data-v="coupe" aria-pressed="false">Купе-кроссовер</button>
+      <button class="chip" data-v="hatch" aria-pressed="false">Хэтчбек</button>
+      <button class="chip" data-v="sedan" aria-pressed="false">Седан</button>
     </div>
     <label class="toggle"><input type="checkbox" id="hideOver"> Скрыть дороже €20k</label>
     <span class="count num" id="count"></span>
@@ -281,12 +492,18 @@ details[open] summary::after{content:" −";}
   <div class="table-wrap">
     <table>
       <thead><tr>
-        <th>Модель</th><th>Годы в бюджете</th><th class="r">Цена, €</th><th class="r">Город</th><th class="r">Трасса</th><th class="r">€/100 км</th><th class="r">Налог/год</th><th>Коробка</th><th>Надёжность</th><th>Бюджет</th>
+        <th>Модель</th><th>Годы</th><th class="r">Цена</th><th class="r">Съездить в IKEA<br>в Никосии и обратно</th><th class="r">Месяц ваших поездок<br>по Лимасолу</th><th class="r">Налог<br>в год</th><th>Разгон 0–100<br>(Corolla ≈ 11 с)</th><th>Надёжность</th><th>Коробка<br>в пробках</th>
       </tr></thead>
       <tbody id="tbody"></tbody>
     </table>
   </div>
-  <p class="foot">Расход: л/100 км, у электромобилей кВт·ч/100 км. «Трасса» — 110–120 км/ч. €/100 км считается при текущих настройках калькулятора. Налог — оценка по CO₂ для машин, зарегистрированных с 2014 года; точную сумму показывает калькулятор на сайте дорожного департамента (RTD).</p>
+  <div class="legend-table">
+    <span><b>Съездить в IKEA и обратно</b> — сколько уйдёт на бензин (у Tesla — на электричество) за поездку Лимасол → IKEA в Никосии → Лимасол, около 160 км почти целиком по трассе.</span>
+    <span><b>Месяц ваших поездок по Лимасолу</b> — Като Полемидия ↔ Олд Таун 2–3 раза в день, около 850 км в месяц.</span>
+    <span><b>Налог в год</b> — обязательный ежегодный платёж за машину. Как его платить, написано ниже.</span>
+    <span><b>Разгон 0–100</b> — за сколько секунд машина разгоняется до 100 км/ч. Чем меньше, тем резвее. Для сравнения: обычная Toyota Corolla-гибрид — около 11 с.</span>
+    <span><b>Коробка в пробках</b> — <span class="dot d-good"></span>спокойная переносит пробки и жару без проблем, <span class="dot d-warn"></span>капризная быстрее изнашивается и может дёргаться. Подробнее в азбуке.</span>
+  </div>
 
   <div class="cards" id="cards"></div>
 </section>
@@ -294,401 +511,473 @@ details[open] summary::after{content:" −";}
 <section id="calc">
   <div class="sec-head">
     <span class="eyebrow">Калькулятор</span>
-    <h2>Сколько стоит год владения</h2>
-    <p class="lede">Топливо или электричество, road tax и плановое обслуживание в независимом сервисе. Страховка и шины не включены: у всех машин в списке они сопоставимы, у Tesla каско обычно дороже.</p>
+    <h2>Сколько стоит год с машиной</h2>
+    <p class="lede">Выберите, как будете ездить, — справа сразу появится, сколько каждая модель обойдётся за год и в месяц: бензин, налог и плановое обслуживание.</p>
   </div>
   <div class="calc">
     <div class="inputs">
-      <div class="field">
-        <label for="km">Пробег в год <span class="val num" id="kmVal"></span></label>
-        <input type="range" id="km" min="5000" max="40000" step="1000" value="20000">
-        <span class="hint">Две поездки в Никосию в неделю — это уже ≈ 17 000 км в год.</span>
+      <div class="step">
+        <div class="step-title"><span class="step-n">1</span>Как вы будете ездить?</div>
+        <div class="presets" id="presets">
+          <button class="preset" data-km="10000" data-hw="5">Только по Лимасолу<span>Като Полемидия ↔ Олд Таун 2–3 раза в день · ≈10 000 км в год</span></button>
+          <button class="preset" data-km="18000" data-hw="45">Лимасол + Никосия раз в неделю<span>≈18 000 км в год</span></button>
+          <button class="preset" data-km="31000" data-hw="65">Лимасол + Никосия 2–3 раза в неделю<span>≈31 000 км в год</span></button>
+        </div>
       </div>
-      <div class="field">
-        <label for="hw">Доля трассы <span class="val num" id="hwVal"></span></label>
-        <input type="range" id="hw" min="0" max="100" step="5" value="50">
-      </div>
-      <div class="field">
-        <label for="fuel">Бензин, €/л</label>
-        <input type="number" id="fuel" min="0.5" max="4" step="0.01" value="1.76">
-      </div>
-      <div class="field">
-        <label for="kwh">Электричество, €/кВт·ч</label>
-        <input type="number" id="kwh" min="0.05" max="1" step="0.01" value="0.30">
-        <span class="hint">Дом по тарифу EAC ≈ €0,25–0,32. Публичные DC-станции дороже.</span>
+      <div class="step fine">
+        <div class="step-title"><span class="step-n">2</span>Или настройте точнее</div>
+        <div class="field">
+          <label for="km">Сколько километров в год <span class="val num" id="kmVal"></span></label>
+          <input type="range" id="km" min="5000" max="40000" step="1000" value="18000">
+        </div>
+        <div class="field">
+          <label for="hw">Какая часть по трассе <span class="val num" id="hwVal"></span></label>
+          <input type="range" id="hw" min="0" max="100" step="5" value="50">
+          <span class="hint">На трассе обычные машины тратят меньше, чем в городе. Гибриды и Tesla — наоборот, экономят в основном в городе.</span>
+        </div>
+        <div class="fuels">
+          <div class="field"><label for="fuel">Бензин, € за литр</label><input type="number" id="fuel" min="0.5" max="4" step="0.01" value="1.76"></div>
+          <div class="field"><label for="diesel">Дизель, € за литр</label><input type="number" id="diesel" min="0.5" max="4" step="0.01" value="2.02"></div>
+          <div class="field wide"><label for="kwh">Электричество дома, € за кВт·ч</label><input type="number" id="kwh" min="0.05" max="1" step="0.01" value="0.30"></div>
+        </div>
+        <span class="hint">Цены на топливо и электричество уже стоят сегодняшние, менять их не нужно.</span>
       </div>
     </div>
-    <div class="bars">
-      <div class="legend"><span><i class="seg-energy"></i>Топливо / энергия</span><span><i class="seg-tax"></i>Road tax</span><span><i class="seg-service"></i>Обслуживание (середина диапазона)</span></div>
-      <div id="bars" class="bars"></div>
+    <div class="results">
+      <div class="results-head"><b>Сколько вы потратите</b><span class="hint">Чем короче полоса, тем дешевле. Синяя часть — топливо, жёлтая — налог, серая — плановое обслуживание. Страховка, шины и неожиданные ремонты сюда не входят.</span></div>
+      <div class="legend"><span><i class="seg-energy"></i>Топливо</span><span><i class="seg-tax"></i>Налог</span><span><i class="seg-service"></i>Обслуживание</span></div>
+      <div id="bars" class="results"></div>
     </div>
   </div>
 </section>
 
-<section id="pitfalls">
+<section id="payments">
   <div class="sec-head">
-    <span class="eyebrow">Подводные камни</span>
-    <h2>Что важно именно на Кипре</h2>
+    <span class="eyebrow">Обязательные платежи</span>
+    <h2>Налог на машину и другие расходы</h2>
+    <p class="lede">На Кипре налог на машину (road tax) платится каждый год. Он привязан к машине, а не к человеку: платит тот, на кого она оформлена.</p>
+  </div>
+  <div class="tax">
+    <div class="taxcard">
+      <span class="q">Сколько</span>
+      <p>Зависит от того, сколько CO₂ выбрасывает машина: эта цифра есть в документах. Чем больше мотор и расход, тем выше налог.</p>
+      <ul>
+        <li>Lexus, MINI Cooper, Audi Q2 и A3, Mercedes A-класс, BMW X1: примерно €50–85 в год</li>
+        <li>Audi Q3 и MINI Countryman: около €105–120</li>
+        <li>BMW X3 и X4 на дизеле: около €105–135 плюс надбавка за дизель</li>
+        <li>Tesla: €0, электромобили освобождены</li>
+      </ul>
+    </div>
+    <div class="taxcard">
+      <span class="q">Когда и как</span>
+      <ul>
+        <li>Раз в год, окно открывается в январе. В 2026 году срок продлили до 31 марта.</li>
+        <li>Можно заплатить сразу за год или частями. Частями выходит примерно на 10% дороже.</li>
+        <li>Платят онлайн на сайте дорожного департамента (RTD) или через JCCsmart, а также в банке или центре госуслуг.</li>
+        <li>Нужны действующая страховка и техосмотр, если машине больше 4 лет.</li>
+      </ul>
+    </div>
+    <div class="taxcard">
+      <span class="q">Если опоздать</span>
+      <p>Штраф — €10 плюс 10% от суммы налога. Если остановит полиция, будет отдельный штраф.</p>
+      <p><b>При покупке</b> попросите у продавца квитанцию, что налог за текущий год оплачен. Иначе платить придётся вам.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <h3>Все обязательные расходы в одном месте</h3>
+    <div class="pay-table">
+      <div class="pay"><b>Налог на машину</b><span class="amt">€0–135</span><span class="when">каждый год, январь–март</span></div>
+      <div class="pay"><b>Обязательная страховка</b><span class="amt">≈ €170–450</span><span class="when">каждый год. Покрывает только ущерб другим</span></div>
+      <div class="pay"><b>Полная страховка (каско)</b><span class="amt">≈ €250–2 500</span><span class="when">по желанию, чаще всего около €475 в год. Покрывает и вашу машину</span></div>
+      <div class="pay"><b>Техосмотр</b><span class="amt">≈ €35–45</span><span class="when">через 4 года после регистрации, потом раз в 2 года</span></div>
+      <div class="pay"><b>Переоформление при покупке</b><span class="amt">≈ €8,5</span><span class="when">один раз. Форма TOM 9B в дорожном департаменте</span></div>
+      <div class="pay"><b>Проверка перед покупкой</b><span class="amt">≈ €50–100</span><span class="when">один раз, в независимом сервисе. Окупается сразу</span></div>
+    </div>
+    <p class="hint">Отдельно уточните в дорожном департаменте, сколько можно ездить по вашим правам после получения резидентства и нужно ли их менять.</p>
+  </div>
+</section>
+
+<section id="cyprus">
+  <div class="sec-head">
+    <span class="eyebrow">Особенности Кипра</span>
+    <h2>Что важно знать именно здесь</h2>
   </div>
   <div class="pits">
-    <div class="pit high">
-      <span class="sev">Высокий риск</span>
-      <h3>Импорт из Японии и Великобритании</h3>
-      <p>Кипр, как и Великобритания с Японией, ездит по левой стороне, поэтому большая часть б/у рынка — праворульные импорты оттуда. Главный риск — скрученный пробег. Ещё в 2009 году сервис Mileage Check находил скрутку у 62% проверенных импортных машин.</p>
+    <div class="pit">
+      <h3>Японская электроника</h3>
+      <p>BMW и Audi из Японии часто приходят с меню и навигацией на японском и радио под японские частоты. Это исправляют перепрошивкой. Уточните, сделана ли она, и включите в цену, если нет.</p>
+    </div>
+    <div class="pit">
+      <h3>Жара, солнце и море</h3>
       <ul>
-        <li>Япония: просите аукционный лист и экспортный сертификат, в них указан пробег на момент вывоза.</li>
-        <li>Великобритания: история техосмотров MOT бесплатно проверяется на gov.uk по британскому номеру, пробег записан на каждом осмотре.</li>
-        <li>Машины из ЕС: отчёт carVertical или аналог по VIN.</li>
+        <li>Кондиционер должен дуть холодным через пару минут после запуска.</li>
+        <li>Аккумулятор в жару живёт 2–3 года.</li>
+        <li>Торпедо и кожа трескаются, если машина стояла на солнце.</li>
+        <li>Если машина жила у моря, посмотрите днище на подъёмнике.</li>
       </ul>
     </div>
-    <div class="pit high">
-      <span class="sev">Высокий риск</span>
-      <h3>Роботы с сухим сцеплением в пробках и жаре</h3>
-      <p>Audi DQ200 (A3, Q2 на бензине), DCT у BMW 118i, X1 18i после 2019 и MINI с 2018, 7G-DCT у Mercedes A-класса. В пробках Лимасола при +40 °C сцепление и мехатроник изнашиваются быстрее, ремонт стоит €1 500–3 000.</p>
-      <ul>
-        <li>Спокойнее всего классический автомат: ZF 8HP (BMW 3, 1 серии F20), Aisin (X1 до 2019, Volvo XC40 T3/T4) или гибридный e-CVT у Lexus.</li>
-        <li>На тест-драйве: холодный старт, ползти в пробке 5–10 км/ч, трогание в горку. Рывки и вибрация — повод уйти.</li>
-      </ul>
-    </div>
-    <div class="pit mid">
-      <span class="sev">Средний риск</span>
-      <h3>Японская электроника на европейских брендах</h3>
-      <p>BMW, Audi и Mercedes из Японии часто приходят с японским меню и навигацией, FM-радио под японский диапазон 76–90 МГц и комплектацией, отличной от европейской. Это лечится перепрошивкой (кодингом), но уточните, сделана ли она. Отзывные кампании европейских дилеров на японские VIN распространяются не всегда — спросите дилера заранее.</p>
-    </div>
-    <div class="pit mid">
-      <span class="sev">Средний риск</span>
-      <h3>Жара, солнце и морской воздух</h3>
-      <ul>
-        <li>Кондиционер: на выходе из дефлектора должно быть +6–10 °C уже через пару минут.</li>
-        <li>12-вольтовый аккумулятор в жару живёт 2–3 года, у Tesla тоже.</li>
-        <li>Трещины на торпедо и коже у машин, стоявших на солнце; тёмный цвет и панорамная крыша сильнее нагревают салон.</li>
-        <li>У гибридов Lexus — вентилятор охлаждения батареи под задним сиденьем, его надо чистить.</li>
-        <li>Машины, стоявшие у моря, смотрите на подъёмнике: днище, тормозные диски, крепёж.</li>
-      </ul>
-    </div>
-    <div class="pit mid">
-      <span class="sev">Средний риск</span>
-      <h3>Дизель не окупается</h3>
-      <p>Дизель на Кипре дороже бензина: €2,02 против €1,76 за литр в октябре 2026. В городе сажевый фильтр забивается, к налогу добавляется надбавка за дизель. Много дешёвых объявлений Q2, Countryman и XC40 — именно дизели. При вашем пробеге выгоднее бензин, гибрид или электро.</p>
-    </div>
-    <div class="pit mid">
-      <span class="sev">Средний риск</span>
+    <div class="pit">
       <h3>Tesla без Tesla</h3>
-      <p>На Кипре нет сети Supercharger и официального сервиса Tesla. Заряжаются на общих станциях CCS2 (EAC e-charge, pcharge, GreenCharge), большинство из них на 50 кВт. Плановое обслуживание не проблема, а вот после ДТП машина может неделями ждать запчасти. Домашний wallbox на 7 кВт добавляет около 40 км запаса хода в час.</p>
+      <p>На Кипре нет фирменных быстрых зарядок Tesla и официального сервиса. Заряжаются на общих станциях, большинство на 50 кВт, но удобнее всего — дома: настенная зарядка на 7 кВт добавляет около 40 км хода в час. Плановое обслуживание не проблема, а вот после ДТП машина может неделями ждать запчасти.</p>
     </div>
-    <div class="pit info">
-      <span class="sev">Важно знать</span>
-      <h3>Налог, техосмотр, страховка, бумаги</h3>
-      <ul>
-        <li>Road tax платится раз в год, окно с января по март. Просрочка — €10 плюс 10% суммы.</li>
-        <li>Техосмотр через 4 года после первой регистрации, дальше раз в 2 года, около €35–45. Без него не продлить road tax.</li>
-        <li>Переоформление: форма TOM 9B и пошлина около €8,5 в RTD, нужна действующая страховка.</li>
-        <li>Страховка: ОСАГО ≈ €170–450 в год, каско ≈ €250–2 500 (медиана около €475).</li>
-        <li>Права: уточните в RTD, сколько можно ездить по вашим правам после получения резидентства и нужен ли обмен с экзаменом.</li>
-      </ul>
-    </div>
-    <div class="pit info">
-      <span class="sev">Важно знать</span>
-      <h3>Везти самостоятельно — обычно невыгодно</h3>
-      <p>Из Японии или Великобритании: пошлина 6,5–10%, НДС 19% на стоимость с доставкой, регистрационный налог по CO₂, доставка до Лимасола €800–1 500, от 4–6 недель до нескольких месяцев. На машинах за €15–20k разница с уже растаможенной на острове обычно съедается рисками и ожиданием.</p>
+    <div class="pit">
+      <h3>Везти машину самой невыгодно</h3>
+      <p>Из Японии или Великобритании: пошлина, НДС 19%, налог на регистрацию, доставка €800–1 500 и ожидание от месяца до нескольких. На машине за €15–20k выгода обычно теряется.</p>
     </div>
   </div>
 </section>
 
-<section id="checklist">
+<section id="scams">
   <div class="sec-head">
-    <span class="eyebrow">Перед покупкой</span>
-    <h2>Чек-лист осмотра</h2>
+    <span class="eyebrow">Гайд для чайников</span>
+    <h2>Как обманывают при покупке и как не попасться</h2>
+    <p class="lede">Самые частые схемы на рынке подержанных машин. Почти от всех защищает одно правило: не торопиться и показать машину своему механику.</p>
   </div>
-  <ol class="steps">
-    <li><span><b>Происхождение.</b> Япония, Великобритания, ЕС или местная машина, и когда она впервые зарегистрирована на Кипре.</span></li>
-    <li><span><b>Пробег по документам.</b> Аукционный лист и экспортный сертификат, британская история MOT или отчёт по VIN.</span></li>
-    <li><span><b>Отзывные кампании.</b> Проверьте VIN у официального дилера марки.</span></li>
-    <li><span><b>Независимая диагностика</b> за €50–100: подъёмник, сканер ошибок, толщиномер краски.</span></li>
-    <li><span><b>Батарея.</b> У гибрида — состояние блоков ВВ-батареи, у электромобиля — SOH и разъём CCS2.</span></li>
-    <li><span><b>Тест-драйв.</b> Холодный пуск, пробка, трасса 100–120 км/ч, работа кондиционера.</span></li>
-    <li><span><b>Бумаги.</b> Оплачен ли road tax, действует ли техосмотр, нет ли кредита на машине.</span></li>
-    <li><span><b>Страховка</b> оформлена до того, как вы выедете на своей машине.</span></li>
-  </ol>
-</section>
+  <div class="scams">
+    <div class="scam">
+      <h3>Скрученный пробег</h3>
+      <p class="how">На машине реально 200 тыс. км, а на приборке — 90 тыс. Особенно часто встречается у привезённых машин: ещё в 2009 году проверка на Кипре нашла скрутку у 62% импорта.</p>
+      <div class="fix"><b>Как не попасться</b>Попросите документы с пробегом: японский аукционный лист, британскую историю техосмотров на gov.uk или отчёт по VIN (carVertical). Сравните пробег с износом руля, педалей и водительского сиденья.</div>
+    </div>
+    <div class="scam">
+      <h3>Скрытая авария или «утопленник»</h3>
+      <p class="how">Машину восстановили после серьёзного ДТП или наводнения и продают как целую. Снаружи всё выглядит отлично.</p>
+      <div class="fix"><b>Как не попасться</b>Механик проверит толщину краски по всему кузову и посмотрит, ровные ли зазоры между деталями. Загляните под коврики: ржавчина, ил и запах сырости — повод уйти.</div>
+    </div>
+    <div class="scam">
+      <h3>Перекупщик под видом владельца</h3>
+      <p class="how">«Продаю свою машину, жена ездила», а на деле это перекупщик, который скрывает историю машины.</p>
+      <div class="fix"><b>Как не попасться</b>Сверьте имя в регистрационных документах машины с паспортом продавца. Если они не совпадают, спросите почему и будьте особенно внимательны.</div>
+    </div>
+    <div class="scam">
+      <h3>Машина в кредите</h3>
+      <p class="how">Продавец ещё не выплатил за машину банку. После покупки банк может её забрать или не дать переоформить.</p>
+      <div class="fix"><b>Как не попасться</b>Попросите подтверждение, что на машине нет кредита или лизинга. Деньги отдавайте только в момент переоформления в дорожном департаменте.</div>
+    </div>
+    <div class="scam">
+      <h3>Прогретый мотор и стёртые ошибки</h3>
+      <p class="how">До вашего приезда машину заводят и прогревают, чтобы скрыть проблемы при холодном пуске, и сбрасывают ошибки на приборной панели.</p>
+      <div class="fix"><b>Как не попасться</b>Попросите не заводить машину до вашего приезда и потрогайте капот: он должен быть холодным. Диагностика покажет, если ошибки недавно стирали.</div>
+    </div>
+    <div class="scam">
+      <h3>Предоплата «чтобы придержать»</h3>
+      <p class="how">«Много желающих, переведите €500, и я отложу машину». Или машину предлагают привезти из-за границы по предоплате, а её не существует.</p>
+      <div class="fix"><b>Как не попасться</b>Не переводите деньги до осмотра. Платите банковским переводом при переоформлении, с договором и чеком.</div>
+    </div>
+    <div class="scam">
+      <h3>Давление и спешка</h3>
+      <p class="how">«Сегодня ещё трое придут смотреть», «цена только до вечера». Цель — не дать вам проверить машину.</p>
+      <div class="fix"><b>Как не попасться</b>Не принимайте решение в день осмотра. Хорошая машина за день не исчезнет, а если исчезнет — будет другая.</div>
+    </div>
+    <div class="scam">
+      <h3>Скрытые платежи у дилера</h3>
+      <p class="how">В объявлении одна цена, а при оформлении добавляются регистрация, «подготовка», налог и страховка.</p>
+      <div class="fix"><b>Как не попасться</b>Попросите итоговую цену «под ключ» письменно, до того как приехать оформлять.</div>
+    </div>
+    <div class="scam">
+      <h3>Отказ от проверки</h3>
+      <p class="how">«Машина идеальная, проверять незачем», «мой механик уже всё посмотрел».</p>
+      <div class="fix"><b>Как не попасться</b>Если продавец не даёт показать машину вашему механику, уходите. Это самый надёжный признак проблемы.</div>
+    </div>
+    <div class="scam">
+      <h3>Неоплаченный налог и долги</h3>
+      <p class="how">Налог за год не оплачен или техосмотр просрочен — после покупки это станет вашей заботой.</p>
+      <div class="fix"><b>Как не попасться</b>Попросите квитанцию об оплате налога и документ о техосмотре. Сумму долга можно вычесть из цены.</div>
+    </div>
+  </div>
 
-<section id="sources">
-  <div class="sec-head">
-    <span class="eyebrow">Источники</span>
-    <h2>Откуда цифры</h2>
+  <div class="panel">
+    <h3>Порядок покупки: 8 шагов</h3>
+    <ol class="steps">
+      <li><span><b>Откуда машина.</b> Япония, Великобритания, Европа или куплена на Кипре новой.</span></li>
+      <li><span><b>Пробег по документам.</b> Аукционный лист, британская история техосмотров или отчёт по VIN.</span></li>
+      <li><span><b>Отзывные кампании.</b> Проверьте VIN у официального дилера марки.</span></li>
+      <li><span><b>Независимая проверка</b> за €50–100: подъёмник, проверка ошибок, толщина краски.</span></li>
+      <li><span><b>Гибрид или электромобиль.</b> Попросите проверить состояние батареи. У Tesla нормальная потеря ёмкости — 8–15% к 100 тыс. км.</span></li>
+      <li><span><b>Тест-драйв.</b> Холодный пуск, пробка, трасса 100–120 км/ч, кондиционер.</span></li>
+      <li><span><b>Бумаги.</b> Имя владельца, оплаченный налог, действующий техосмотр, нет кредита.</span></li>
+      <li><span><b>Оплата и страховка.</b> Деньги — при переоформлении, страховка — до того, как сядете за руль.</span></li>
+    </ol>
   </div>
-  <p class="note">Цены — срез объявлений на 22 октября 2026, рынок меняется каждую неделю. Отзывы владельцев обобщены по форумам и обзорам надёжности, это не замеры. Ставки налогов и сборов уточняйте в RTD и таможне перед сделкой.</p>
-  <ul class="sources">
-    <li><a href="https://allcars.cy/cars/tesla" target="_blank" rel="noopener">allcars.cy</a> — объявления по всем моделям</li>
-    <li><a href="https://isellcars.cy/guides/so-is-a-tesla-actually-worth-it" target="_blank" rel="noopener">isellcars.cy — Tesla на Кипре</a></li>
-    <li><a href="https://isellcars.cy/cyprus-road-tax-calculator" target="_blank" rel="noopener">isellcars.cy — road tax 2026</a></li>
-    <li><a href="https://taxrelocate.com/2025/09/13/buying-a-car-in-cyprus-in-2025-market-overview-taxes-and-insurance-costs/" target="_blank" rel="noopener">Tax Relocate — налоги и страховка</a></li>
-    <li><a href="https://www.zenolegal.com/resources/cyprus-driving-licence-car-import-2026" target="_blank" rel="noopener">Zeno Legal — права и импорт, 2026</a></li>
-    <li><a href="https://carscout4you.com/blog/cyprus-car-import-guide" target="_blank" rel="noopener">CarScout — импорт на Кипр</a></li>
-    <li><a href="https://nobukojapan.com/japanese-car-blog/cars-from-japan-to-cyprus-how-to-buy-ship-and-save-money-in-2026" target="_blank" rel="noopener">Nobuko Japan — доставка из Японии</a></li>
-    <li><a href="https://www.dailyfuels.com/cyprus/" target="_blank" rel="noopener">DailyFuels — цены на топливо</a></li>
-    <li><a href="https://index.cy/articles/electricity-in-cyprus-guide/" target="_blank" rel="noopener">INDEX.cy — тарифы EAC</a></li>
-    <li><a href="https://gebrauchtwagenberater.de/mercedes-a-klasse-w177-probleme/" target="_blank" rel="noopener">Gebrauchtwagenberater — A-класс W177</a></li>
-    <li><a href="https://archive.cyprus-mail.com/?p=640621" target="_blank" rel="noopener">Cyprus Mail — скрутка пробега у импорта</a></li>
-  </ul>
+
+  <p class="note"><b>Информация актуальна на 22 октября 2026 года.</b> Цены машин взяты из объявлений на Кипре на эту дату, цены на топливо и правила налога — тоже. Рынок меняется каждую неделю, поэтому перед сделкой сверьте цену с похожими объявлениями. Стоимость ремонтов указана ориентировочно, для независимого сервиса на Кипре.</p>
 </section>
 
 </div>
 
 <script>
+const SCORE_LABELS = [["rel","Надёжность"],["cost","Дёшево содержать"],["hwy","Комфорт на трассе"],["space","Место и багажник"],["city","Удобство в городе"]];
+const GB = {
+  good:["d-good","спокойная"],
+  mixed:["d-warn","зависит от версии"],
+  bad:["d-warn","капризная"],
+  ok:["d-warn","терпимая"],
+  none:["d-good","нет коробки"]
+};
+const COROLLA = 11.0;
+function accelWord(a){ return a<=6?"очень резвая":a<=8?"резвая":a<=9?"бодрая":a<=10.2?"чуть бодрее Corolla":a<=11.5?"как Corolla":"медленнее Corolla"; }
+function accelDiff(a){ const d=Math.round((COROLLA-a)*10)/10; if(Math.abs(d)<0.3) return "примерно как Corolla"; return (d>0?"на "+String(d).replace(".",",")+" с быстрее":"на "+String(-d).replace(".",",")+" с медленнее")+" Corolla"; }
 const MODELS = [
- {id:"lexus-ct",brand:"Lexus",model:"CT 200h",gen:"Хэтчбек, рестайлинг",body:"hatch",power:"hybrid",years:"2016–2018",pmin:13500,pmax:16500,fit:"in",city:5.0,hwy:6.0,unit:"l",co2:88,gb:"e-CVT, без сцепления",gbr:"low",rel:5,svc:[250,400],
-  verdict:"Самый беспроблемный и экономичный вход в премиум. Маленький и жёсткий, зато почти не ломается.",
-  pros:["Гибрид Toyota — одна из самых надёжных систем на рынке","Реально 4,5–5,5 л в городе","Дешёвое обслуживание, запчасти общие с Prius","Хорошо держит цену при перепродаже"],
-  cons:["Жёсткая подвеска, шумно на 120 км/ч","Маленький багажник","Медленный: 0–100 примерно за 10 с","Устаревшая мультимедиа"],
-  owners:"Чаще всего пишут, что машина «просто ездит» 200–300 тыс. км без вмешательств. Жалуются на жёсткость, шум шин и тесный задний ряд. На трассу до Никосии подходит, но комфорта меньше, чем у NX или BMW 3.",
-  service:"ТО раз в год или каждые 15 000 км: масло 0W-20, фильтры. Раз в 2–3 года чистка вентилятора охлаждения гибридной батареи под задним сиденьем, в жару это критично. Тормоза изнашиваются медленно благодаря рекуперации.",
-  avoid:"Машины с ошибками гибридной батареи, экземпляры из такси и каршеринга с пробегом от 250 тыс. км.",
-  listings:["2016 · 148 000 км · €13 500","2017 · 52 000 км · €16 000","2018 · 129 000 км · €15 700","2021 · 45 000 км · €22 900 (выше бюджета)"]},
- {id:"lexus-nx",brand:"Lexus",model:"NX 300h",gen:"1-е поколение (AZ10)",body:"suv",power:"hybrid",years:"2015–2017",pmin:19500,pmax:23000,fit:"edge",city:6.8,hwy:7.8,unit:"l",co2:121,gb:"e-CVT, без сцепления",gbr:"low",rel:5,svc:[300,450],
-  verdict:"Самый надёжный премиальный кроссовер в бюджете, но на верхней границе. Ищите 2015–2017 и торгуйтесь.",
-  pros:["Надёжность уровня Toyota: ни сцепления, ни турбины","Тихий, мягкий, качественная сборка","Высокая ликвидность","Идеален для пробок Лимасола"],
-  cons:["На 120 км/ч расход растёт до 7,5–8,5 л","Неудобный тачпад мультимедиа","Скромный для класса багажник","Вариатор «гудит» при резком разгоне"],
-  owners:"Отзывы почти единодушны: дорого, но «купил и забыл». Минусы — мультимедиа и динамика без драйва. В 2017 году был рестайлинг с новыми фарами, салоном и экраном, его стоит предпочесть.",
-  service:"ТО каждые 15 000 км или раз в год. Как у CT — следить за вентилятором охлаждения батареи. Задний электромотор полноприводной версии почти не обслуживается. Многие запчасти общие с Toyota RAV4.",
-  avoid:"Полноприводные версии с ошибками заднего мотора и машины после ДТП: фары и бамперы Lexus дорогие.",
+ {id:"lexus-nx",accel:9.2,accelText:"9,2 с — гибрид FWD и AWD почти одинаковы",brand:"Lexus",model:"NX 300h",gen:"1-е поколение, гибрид",body:"suv",fuel:"Гибрид",ft:"petrol",years:"2015–2017",pmin:19500,pmax:23000,fit:"edge",city:6.3,hwy:7.3,co2:121,rel:5,svc:[300,450],
+  gb:"good",gbText:"Гибридная: переключать нечего, ломаться почти нечему.",
+  scores:{rel:5,cost:4,hwy:4,space:3,city:4},
+  verdict:"Самый надёжный кроссовер в бюджете. Тихий, мягкий, экономичный в пробках. Почти нечему ломаться: в гибридной системе нет сцепления, турбины и обычной коробки.",
+  hard:"Найти в бюджете. Хорошие машины стоят €21–23k, до €20k — только с большим пробегом. Придётся торговаться и проверять гибридную батарею.",
+  complaints:["Неудобная мультимедиа: экраном управляют через тачпад, к нему долго привыкают","На трассе 120 км/ч бензина уходит больше, чем в городе: гибрид экономит в основном в пробках","При резком разгоне мотор «воет», так работает гибридная коробка","Багажник меньше, чем у конкурентов того же размера","Дорогие детали кузова: фары и бамперы после ДТП"],
+  repairs:[["Чистка вентилятора гибридной батареи","€80–150"],["Аккумулятор 12 В","€150–250"],["Гибридная батарея (редко, после 200+ тыс. км)","€1 500–4 000"],["Фара после ДТП","€800–1 500"]],
+  yes:"Тем, кто хочет купить и не думать о сервисе. Много города и пробок.",
+  no:"Тем, кто ищет драйв, или кому нужен большой багажник.",
+  service:"ТО раз в год или каждые 15 000 км. Раз в 2–3 года — чистка вентилятора, который охлаждает гибридную батарею: в жару это важно. В 2017 году модель обновили — новые фары, экран и салон, — эту версию стоит предпочесть.",
+  avoid:"Машины с ошибками гибридной системы, после ДТП и бывшие такси с пробегом больше 250 тыс. км.",
   listings:["2017 · 156 000 км · €21 500","2017 · 120 000 км · €23 000","2019 · 46 000 км · €26 900 (выше бюджета)"]},
- {id:"lexus-ux",brand:"Lexus",model:"UX 250h",gen:"2019+",body:"suv",power:"hybrid",years:"2019–2020",pmin:24900,pmax:25500,fit:"over",city:5.3,hwy:6.5,unit:"l",co2:105,gb:"e-CVT, без сцепления",gbr:"low",rel:5,svc:[250,400],
-  verdict:"Если бюджет растягивается до €25k — самый экономичный премиальный кроссовер. До €20k на Кипре его практически нет.",
-  pros:["Гибридная система Toyota нового поколения","5–6 л в городе","Свежий салон и хорошая шумоизоляция","Надёжность"],
-  cons:["2019–2020 стоят от €25 000","Маленький багажник и тесный задний ряд","Низкая для кроссовера посадка"],
-  owners:"Хвалят расход и тишину, ругают тесноту сзади и багажник. По сути это хэтчбек с приподнятой подвеской.",
-  service:"Как у остальных гибридов Lexus: ТО раз в год, контроль охлаждения батареи.",
-  avoid:"Электрическую версию UX 300e — у неё небольшой запас хода для трассы.",
+ {id:"lexus-ux",accel:8.5,accelText:"8,5 с",brand:"Lexus",model:"UX 250h",gen:"Гибрид, 2019+",body:"suv",fuel:"Гибрид",ft:"petrol",years:"2019–2020",pmin:24900,pmax:25500,fit:"over",city:5.0,hwy:6.3,co2:105,rel:5,svc:[250,400],
+  gb:"good",gbText:"Гибридная: переключать нечего, ломаться почти нечему.",
+  scores:{rel:5,cost:5,hwy:3,space:2,city:5},
+  verdict:"Самый экономичный премиальный кроссовер и надёжность Lexus. По сути компактный хэтчбек с приподнятой подвеской.",
+  hard:"Цена. До €20k на Кипре его почти нет, реальные предложения начинаются от €24 900.",
+  complaints:["Тесно сзади: взрослому за высоким водителем неудобно","Маленький багажник, меньше, чем у MINI Countryman","Тачпад мультимедиа, как у NX","Посадка ниже, чем ждёшь от кроссовера"],
+  repairs:[["Чистка вентилятора гибридной батареи","€80–150"],["Аккумулятор 12 В","€150–250"],["Тормозная жидкость и фильтры","€100–200"]],
+  yes:"Паре без детей, много города. Важны экономия и надёжность.",
+  no:"Если часто возите пассажиров сзади или много вещей.",
+  service:"Как у NX: ТО раз в год, следить за охлаждением батареи. Расходы на сервис самые низкие в списке.",
+  avoid:"Машины без истории обслуживания и после ДТП.",
   listings:["2019 · 88 000 км · €25 450","2020 · 98 000 км · €24 950","2019 · 97 915 км · €24 950"]},
- {id:"bmw-x1",brand:"BMW",model:"X1",gen:"F48",body:"suv",power:"petrol",years:"2016–2020",pmin:13500,pmax:17000,fit:"in",city:8.0,hwy:6.5,unit:"l",co2:128,gb:"6АКПП Aisin до 2019, потом 7-ступ. робот DCT у sDrive18i",gbr:"mid",rel:3.5,svc:[450,750],
-  verdict:"Лучший компромисс между «настоящим BMW» и практичностью. Берите sDrive20i или 18i с обычным автоматом.",
-  pros:["Большой багажник (~505 л) и высокая посадка","Качественный салон, хорошая управляемость","Много предложений, есть из чего выбрать","Моторы B38/B48 считаются удачными"],
-  cons:["Шины run-flat: жёстко и дорого","3-цилиндровый 18i вибрирует на холостых","Дорогой официальный сервис","Передний привод у sDrive"],
-  owners:"Хвалят практичность и отделку, ругают жёсткость на run-flat и цены на запчасти. Многие переходят на обычные шины с ремкомплектом — подвеска заметно мягчеет.",
-  service:"Масло раз в год или каждые 10 000 км: в жару лучше чаще, чем «умный» интервал BMW. После 80–100 тыс. км типичны прокладка корпуса масляного фильтра, помпа и термостат (B48), опоры двигателя. Тормозная жидкость раз в 2 года. Независимые сервисы BMW заметно дешевле дилера.",
-  avoid:"Машины без истории ТО с интервалами по 25–30 тыс. км и японские импорты с непрошитой японской мультимедиа.",
-  listings:["2016 · 92 000 км · €13 500","2017 · 109 000 км · €15 000","2018 · 105 000 км · €15 900","2020 · 67 000 км · €14 000","2020 · 72 000 км · €16 995"]},
- {id:"bmw-1",brand:"BMW",model:"1 серии",gen:"F40 (2019+) / F20 (до 2019)",body:"hatch",power:"petrol",years:"2019–2022",pmin:13700,pmax:20000,fit:"in",city:7.2,hwy:5.6,unit:"l",co2:125,gb:"F40: 7-ступ. робот DCT · F20: 8АКПП ZF",gbr:"mid",rel:3.5,svc:[400,700],
-  verdict:"Самый свежий BMW за эти деньги. F40 переднеприводный и практичнее, F20 — задний привод и классический автомат ZF.",
-  pros:["Современный салон и цифровые приборы у F40","Экономичный 1.5 турбо","Компактный — легко парковаться в Лимасоле","F20 118i/120i: задний привод и надёжный ZF"],
-  cons:["F40: передний привод и робот DCT","Тесно сзади","Жёсткая подвеска с пакетом M Sport","Run-flat шины"],
-  owners:"F40 хвалят за салон и экономичность, но многие скучают по заднему приводу F20. Жалобы — жёсткость и подёргивания DCT на малой скорости.",
-  service:"Как у X1: масло раз в год или 10 000 км, независимый сервис. У DCT — замена масла коробки примерно раз в 60 тыс. км, хотя BMW считает его «на весь срок».",
-  avoid:"F20 до 2015 года с дизелем N47 (проблемная цепь ГРМ) и машины с рывками DCT на 1–2 передаче.",
-  listings:["2019 · 57 000 км · €13 700","2021 · 23 000 км · €18 800","2021 · 51 000 км · €17 400 (дизель)","2022 · €20 000"]},
- {id:"bmw-3",brand:"BMW",model:"3 серии",gen:"F30 рестайлинг (2016–2019)",body:"sedan",power:"petrol",years:"2016–2019",pmin:15000,pmax:21000,fit:"edge",city:8.0,hwy:5.8,unit:"l",co2:130,gb:"8АКПП ZF 8HP",gbr:"low",rel:4,svc:[450,800],
-  verdict:"Лучшая машина для трассы до Никосии в списке: тихо, устойчиво, экономично на 120 км/ч. Ищите 320i 2016+ с мотором B48.",
-  pros:["Автомат ZF 8HP — один из самых надёжных","Задний привод и устойчивость на трассе","5,5–6 л на трассе","Самый комфортный BMW в списке"],
-  cons:["Предложений в бюджете немного, придётся искать","G20 (2019+) обычно уже €20–23k","Обслуживание дороже, чем у Lexus","Седан менее практичен, чем кроссовер"],
-  owners:"Рестайлинговый F30 с B48 считают «правильной» 3-й серией: надёжнее дорестайлинга и всё ещё с классической развесовкой. Жалуются на цены у дилера и тесноватый салон по меркам класса.",
-  service:"Масло раз в год или 10 000 км, масло в АКПП ZF раз в 60–80 тыс. км (BMW пишет «на весь срок», механики советуют менять). Типичные работы: прокладки, помпа, сайлентблоки передней подвески.",
-  avoid:"320i до 2016 года с мотором N20: известная проблема растяжения цепи ГРМ, ремонт €1 000–2 000.",
-  listings:["2020 · 45 000 км · €23 000 (G20, выше бюджета)","На дату проверки F30 2016–2018 попадалось мало — следите за новыми объявлениями"]},
- {id:"mini-cooper",brand:"MINI",model:"Cooper",gen:"F56 / F55",body:"hatch",power:"petrol",years:"2017–2019",pmin:11900,pmax:15500,fit:"in",city:6.8,hwy:5.4,unit:"l",co2:118,gb:"6АКПП Aisin до 2018, потом 7-ступ. DCT",gbr:"mid",rel:3.5,svc:[400,650],
-  verdict:"Самая эмоциональная машина в бюджете, и остаётся запас денег. Но маленькая: на трассе шумно, багажник символический.",
-  pros:["Картинговая управляемость и дизайн","Моторы и качество BMW","Экономичный 1.5","Дешевле остальных — запас на ТО"],
-  cons:["Багажник около 210 л у 3-дверки","Жёсткая подвеска и run-flat","Шумно на трассе","Тесно сзади"],
-  owners:"Любят за характер и стиль, жалуются на тряску и шум на скорости. Для ежедневной трассы многие выбирают 5-дверку (F55) или Countryman.",
-  service:"Как у BMW с тем же мотором B38: масло раз в год, независимые MINI/BMW-сервисы. Следить за течами масла и помпой после 80 тыс. км.",
-  avoid:"MINI до 2014 года (R56) с мотором N14/N18 — известны проблемами цепи и расходом масла.",
+ {id:"bmw-x1",accel:9.7,accelText:"sDrive18i — 9,7 с, sDrive20i — 7,7 с",brand:"BMW",model:"X1",gen:"F48",body:"suv",fuel:"Бензин",ft:"petrol",years:"2017–2020",pmin:13500,pmax:17000,fit:"in",city:8.0,hwy:6.5,co2:128,rel:3.5,svc:[450,750],
+  gb:"mixed",gbText:"До 2019 года — спокойный автомат. У версии 18i после 2019 года — капризный робот.",
+  scores:{rel:3.5,cost:3,hwy:4,space:4,city:4},
+  verdict:"Лучший баланс в бюджете: просторный, с качественным салоном, хорошо едет по трассе. Много предложений, есть из чего выбрать.",
+  hard:"Выбрать версию. Внешне машины одинаковые, а мотор и коробка разные. Спокойнее всего sDrive20i или sDrive18i до 2019 года с классическим автоматом.",
+  complaints:["Жёсткая подвеска из-за шин run-flat. Многие ставят обычные шины, и становится мягче","3-цилиндровый мотор 18i вибрирует на холостом ходу","Дорогие запчасти и официальный сервис","Робот после 2019 года подёргивается в пробках","Течи масла после 80–100 тыс. км"],
+  repairs:[["Прокладка корпуса масляного фильтра","€300–500"],["Помпа охлаждения","€700–1 100"],["Сцепление или блок робота","€1 500–3 000"],["Шина run-flat, одна","€150–250"]],
+  yes:"Нужен практичный кроссовер с ощущением «настоящего» премиума и хорошей управляемостью.",
+  no:"Хочется мягкой подвески и минимальных расходов на сервис.",
+  service:"Масло — раз в год или каждые 10 000 км: интервал BMW в 15–30 тыс. для жары слишком длинный. Тормозная жидкость раз в 2 года. Независимые сервисы BMW заметно дешевле дилера.",
+  avoid:"Машины без истории обслуживания и японские импорты с непрошитой японской мультимедиа.",
+  listings:["2017 · 109 000 км · €15 000","2018 · 105 000 км · €15 900","2018 · 115 000 км · €14 200","2020 · 67 000 км · €14 000","2020 · 72 000 км · €16 995"]},
+ {id:"mini-cooper",accel:7.9,accelText:"Cooper 1.5 — около 7,9 с, Cooper S — 6,8 с",brand:"MINI",model:"Cooper",gen:"3 или 5 дверей",body:"hatch",fuel:"Бензин",ft:"petrol",years:"2017–2019",pmin:11900,pmax:15500,fit:"in",city:6.8,hwy:5.4,co2:118,rel:3.5,svc:[400,650],
+  gb:"mixed",gbText:"До 2018 года — спокойный автомат, с 2018 года — капризный робот.",
+  scores:{rel:3.5,cost:4,hwy:2,space:1,city:5},
+  verdict:"Самая эмоциональная машина в бюджете, и остаётся запас денег. Острая управляемость, узнаваемый дизайн, моторы BMW.",
+  hard:"Размер. Это маленькая машина: в 3-дверке багажник на пару сумок, а на трассе шумно и жёстко.",
+  complaints:["Багажник на чемодан и пакеты из магазина","Жёстко на неровностях, особенно на run-flat шинах","Шумно на трассе 120 км/ч","Тесно сзади, в 3-дверку неудобно сажать пассажиров","Запчасти по цене BMW"],
+  repairs:[["Течь масла (прокладки)","€300–500"],["Помпа охлаждения","€600–900"],["Сцепление робота (с 2018)","€1 500–2 500"]],
+  yes:"Город, один-два человека, хочется удовольствия от вождения и стиля.",
+  no:"Частые поездки с пассажирами, много багажа, важен комфорт на трассе.",
+  service:"Как у BMW с тем же мотором: масло раз в год, независимый сервис MINI или BMW. После 80 тыс. км следить за течами масла и помпой. Если ездите с пассажирами, ищите 5-дверку.",
+  avoid:"MINI до 2014 года: у них моторы с известными проблемами цепи и расхода масла.",
   listings:["2017 · 74 000 км · €11 900","2018 · 51 500 км · €15 000"]},
- {id:"mini-countryman",brand:"MINI",model:"Countryman",gen:"F60",body:"suv",power:"petrol",years:"2018–2020",pmin:15900,pmax:19500,fit:"in",city:7.8,hwy:6.3,unit:"l",co2:135,gb:"7-ступ. DCT (Cooper) / 8АКПП Aisin (Cooper S ALL4, D)",gbr:"mid",rel:3.5,svc:[400,700],
-  verdict:"MINI для взрослой жизни: можно возить людей и вещи и не потерять характер. Много предложений 2018–2020.",
-  pros:["Нормальный багажник (~450 л) и задний ряд","Стильный салон","Платформа BMW X1","Много машин за €16–19k"],
-  cons:["Дорого для своего размера","Мультимедиа до 2020 устарела","Жёсткость на run-flat","Гибрид PHEV попадал под отзыв по батарее"],
-  owners:"Самый практичный MINI: хвалят салон и посадку, ругают цену запчастей и жёсткость. На трассе ощутимо спокойнее Cooper.",
-  service:"Как у BMW X1: масло раз в год или 10 000 км, тормозная жидкость раз в 2 года, масло DCT — около 60 тыс. км.",
-  avoid:"Cooper SE ALL4 (PHEV): сложный, дорогой в ремонте, был отзыв по высоковольтной батарее в 2020. Дизели Cooper D — топливо на Кипре дороже.",
-  listings:["2018 · 70 000 км · €16 900","2018 · 53 300 км · €17 000","2019 · 64 000 км · €17 900","2019 · 101 000 км · €16 000","2020 · 68 000 км · €17 900 (дизель)"]},
- {id:"audi-a3",brand:"Audi",model:"A3",gen:"8V рестайлинг",body:"hatch",power:"petrol",years:"2017–2020",pmin:14500,pmax:17500,fit:"in",city:6.8,hwy:5.4,unit:"l",co2:115,gb:"7-ступ. S tronic DQ200 (сухое сцепление)",gbr:"high",rel:3.5,svc:[400,650],
-  verdict:"Тихий, качественный и экономичный хэтч. Главный риск — «сухой» робот DQ200: берите с историей и без рывков.",
-  pros:["Качество салона и шумоизоляция","1.5 TFSI с отключением цилиндров — 5–6 л на трассе","Virtual Cockpit (опция)","Есть седан и Sportback"],
-  cons:["DQ200 дёргается в пробках, ремонт мехатроника €1 500–3 000","1.5 TFSI 2017–2018 провалы при разгоне (лечится прошивкой)","Тесноват сзади"],
-  owners:"Хвалят тишину и расход, ругают коробку в пробках. Владельцы, которые много ездят по трассе, жалоб почти не имеют.",
-  service:"Масло раз в год или 15 000 км. Проверить, обновлялось ли ПО коробки и мотора. Масло в DQ200 «необслуживаемое», но многие меняют раз в 60 тыс. км.",
-  avoid:"Машины, которые дёргаются при трогании или пробуксовывают на 1–2 передаче, и 1.4 TFSI до 2014 года.",
-  listings:["2016 · 90 000 км · €10 750 (1.4)","2020 · 74 000 км · €16 500","2016 S3 · 55 000 км · €17 900"]},
- {id:"audi-q2",brand:"Audi",model:"Q2",gen:"GA",body:"suv",power:"petrol",years:"2018–2022",pmin:12500,pmax:21000,fit:"in",city:7.2,hwy:5.9,unit:"l",co2:125,gb:"7-ступ. S tronic (у бензина — сухое DQ200)",gbr:"high",rel:3.5,svc:[400,650],
-  verdict:"Неожиданно хорошая цена: 2021–2023 годы укладываются в €18–21k. Компактный городской кроссовер, но небольшой.",
-  pros:["Свежие годы в бюджете","Качество Audi и высокая посадка","Удобный размер для города","Экономичный 1.5 TFSI"],
-  cons:["Небольшой багажник (~405 л) и задний ряд","DQ200 у бензиновых версий","Жёсткая подвеска","Много предложений — дизели"],
-  owners:"Хвалят качество и «взрослость» для своего размера, ругают тесноту сзади и жёсткую подвеску на больших дисках.",
-  service:"Как у A3: масло раз в год, обновления ПО коробки. На свежих машинах может оставаться заводская гарантия — проверьте.",
-  avoid:"Дизель 2.0 TDI, если не ездите много по трассе, и машины с рывками коробки.",
-  listings:["2018 · 115 000 км · €12 500 (дизель)","2021 · 70 000 км · €18 500","2023 · 25 000 км · €19 900","2022 · 48 500 км · €21 000 (дизель)"]},
- {id:"audi-q3",brand:"Audi",model:"Q3",gen:"8U (до 2018) / F3 (2018+)",body:"suv",power:"petrol",years:"2016–2019",pmin:11000,pmax:22000,fit:"edge",city:8.3,hwy:6.6,unit:"l",co2:140,gb:"6АКПП / 7-ступ. S tronic",gbr:"mid",rel:3.5,svc:[450,700],
-  verdict:"Старый 8U стоит €11–15,5k, новый F3 начинается примерно от €22k. Бюджет €20k как раз попадает в провал между ними.",
-  pros:["F3: просторный современный салон","Большой багажник у F3 (~530 л)","8U — недорогой вход в Audi-кроссовер"],
-  cons:["8U внутри морально устарел","F3 2019 — на границе или выше бюджета","Расход выше, чем у Q2 и A3"],
-  owners:"8U ценят за надёжность простых версий, F3 — за салон и пространство. Обе версии ругают за цену опций и расход в городе.",
-  service:"Масло раз в год, свечи и фильтры по регламенту, обслуживание коробки раз в 60 тыс. км.",
-  avoid:"8U 2.0 TFSI ранних лет с повышенным расходом масла и машины без истории ТО.",
-  listings:["2017 · 95 000 км · €15 500","2018 · 115 000 км · €15 500","2019 · 114 000 км · €21 900 (F3)"]},
- {id:"merc-a",brand:"Mercedes-Benz",model:"A-класс",gen:"W177",body:"hatch",power:"petrol",years:"2019–2021",pmin:15500,pmax:22000,fit:"in",city:7.0,hwy:5.6,unit:"l",co2:128,gb:"7G-DCT (робот, мокрое сцепление)",gbr:"mid",rel:3.5,svc:[450,750],
-  verdict:"Самый эффектный салон за эти деньги: два широких экрана MBUX. Берите 2020+ и проверяйте отзывные кампании по VIN.",
-  pros:["Салон и мультимедиа MBUX — лучшие в бюджете","Свежие годы 2019–2021","Комфортная подвеска без AMG-пакета","Экономичный 1.33 турбо"],
-  cons:["7G-DCT подёргивается на малой скорости (часто лечится прошивкой)","Несколько отзывных кампаний 2019–2020","Шум шин на трассе","Дешёвый пластик внизу салона"],
-  owners:"Немецкие обзоры надёжности оценивают мотор M282 (A180/A200) неплохо. Владельцы хвалят салон и экономичность, ругают рывки коробки и шумоизоляцию.",
-  service:"Service A/B раз в год или 15–25 тыс. км, лучше чаще. Масло в 7G-DCT примерно раз в 60 тыс. км. Проверить, сделаны ли отзывы по утечке масла из трубки турбины (2019–2020) и по потере масла коробкой (2018–2020).",
-  avoid:"Машины без подтверждённых отзывных работ и версии с пакетом AMG на 19-дюймовых дисках, если важен комфорт.",
-  listings:["2019 · 137 000 км · €15 500","2019 · 47 000 км · €20 000","2020 · 78 300 км · €18 500","2021 · 24 650 км · €20 000","2020 · 40 000 км · €21 900"]},
- {id:"volvo-xc40",brand:"Volvo",model:"XC40",gen:"1-е поколение",body:"suv",power:"petrol",years:"2019–2022",pmin:16300,pmax:23500,fit:"edge",city:8.8,hwy:7.0,unit:"l",co2:150,gb:"8АКПП Aisin (T3/T4) / 7DCT (B4, Recharge)",gbr:"low",rel:3.5,svc:[450,700],
-  verdict:"Самый безопасный и «дизайнерский» кроссовер в списке, но на верхней границе бюджета и прожорливее конкурентов.",
-  pros:["Скандинавский дизайн и удобные сиденья","Безопасность и ассистенты","Практичный салон","Есть гибриды B4 и Recharge T5"],
-  cons:["T3/T4 расходуют 8–10 л в городе","Медленная мультимедиа Sensus","Большинство предложений — €21–25k","Дорогой официальный сервис"],
-  owners:"Хвалят сиденья, обзорность и безопасность, ругают расход и подвисания мультимедиа. 3-цилиндровый T3 кому-то кажется шумноватым.",
-  service:"ТО раз в год или 20–30 тыс. км у официала, в жару лучше масло раз в 15 тыс. У PHEV-версии отдельно проверять ВВ-батарею и зарядный порт.",
-  avoid:"PHEV с большим пробегом без истории (их продают дешевле не просто так) и дизели D3/D4.",
-  listings:["2019 · 140 000 км · €19 990 (дизель)","2021 · 85 000 км · €21 500 (гибрид)","2022 · 81 000 км · €19 900","2022 · 157 000 км · €16 300 (PHEV)"]},
- {id:"tesla-3",brand:"Tesla",model:"Model 3",gen:"Standard Range+ / Long Range",body:"sedan",power:"ev",years:"2019–2021",pmin:19500,pmax:24000,fit:"edge",city:14.5,hwy:17,unit:"kwh",co2:0,gb:"Одноступенчатый редуктор",gbr:"low",rel:4,svc:[100,250],
-  verdict:"Самая дешёвая в эксплуатации и самая быстрая машина в списке. Подходит, если на вилле можно поставить зарядку.",
-  pros:["Налог €0, энергия в 2–3 раза дешевле бензина","Лимасол — Никосия — Лимасол с большим запасом","Нет масла, сцепления, ремней","0–100 за 5–6 с и обновления по воздуху"],
-  cons:["Нет Supercharger'ов и сервиса Tesla на Кипре","Кузовной ремонт — недели ожидания запчастей","Жёсткая и шумная подвеска, неровная сборка","Всё управление через экран"],
-  owners:"На Кипре хвалят стоимость владения и динамику, ругают ожидание запчастей после ДТП и сборку. Частые мелочи: скрип верхних рычагов передней подвески, замена 12-вольтового аккумулятора, ручки дверей, уплотнители.",
-  service:"Плановых ТО почти нет: салонный фильтр раз в 1–2 года, проверка тормозной жидкости раз в 2 года, обслуживание кондиционера раз в 4–6 лет, ротация шин каждые 10–12 тыс. км (шины изнашиваются быстрее). Перед покупкой проверьте состояние батареи: нормальная деградация — около 8–15% к 100 тыс. км.",
-  avoid:"Ранние японские машины без разъёма CCS2, такси с пробегом от 150 тыс. км и машины после серьёзных ДТП.",
-  listings:["2020 · 71 000 км · €20 000","2020 · 103 000 км · €19 900","2020 · 104 000 км · €22 900","2021 · 39 405 км · €24 000","2022 · 152 954 км · €19 500 (Performance)"]},
- {id:"bmw-i3",brand:"BMW",model:"i3",gen:"I01, батарея 120 А·ч",body:"hatch",power:"ev",years:"2019–2022",pmin:21500,pmax:25000,fit:"over",city:13.5,hwy:17.5,unit:"kwh",co2:0,gb:"Одноступенчатый редуктор",gbr:"low",rel:4,svc:[150,300],
-  verdict:"Отличный городской электромобиль, но для регулярной трассы до Никосии впритык: реальный запас летом 200–250 км.",
-  pros:["Углепластиковый кузов, нет коррозии","Идеален для Лимасола: компактный и вёрткий","Налог €0","Необычный экологичный салон"],
-  cons:["Дороже бюджета","На 120 км/ч запас хода быстро тает","Узкие шины, чувствителен к боковому ветру","4 места, задние двери-«купе»"],
-  owners:"Городские владельцы в восторге, те, кто много ездит по трассе, жалуются на запас хода и шум. Модель снята с производства в 2022 году.",
-  service:"Почти как у Tesla: тормозная жидкость, фильтр салона, кондиционер. Версии REx с мотоциклетным мотором-генератором требуют отдельного ТО.",
-  avoid:"Версии 60 и 94 А·ч (2014–2018) — запаса не хватит на Никосию и обратно; REx — дополнительная сложность.",
-  listings:["2019 · 85 000 км · €21 495","2022 · 42 000 км · €23 900","2021 · 54 000 км · €24 900"]}
+ {id:"mini-countryman",accel:9.7,accelText:"Cooper — 9,7 с, Cooper S — 7,4 с",brand:"MINI",model:"Countryman",gen:"F60",body:"suv",fuel:"Бензин",ft:"petrol",years:"2018–2020",pmin:15900,pmax:19500,fit:"in",city:7.8,hwy:6.3,co2:135,rel:3.5,svc:[400,700],
+  gb:"mixed",gbText:"У обычного Cooper — капризный робот, у полноприводного Cooper S ALL4 — спокойный автомат.",
+  scores:{rel:3.5,cost:3,hwy:3,space:3,city:4},
+  verdict:"MINI для взрослой жизни: можно возить людей и вещи и не потерять характер. Внутри это BMW X1.",
+  hard:"Переплата за бренд: за те же деньги BMW X1 немного просторнее. Многие объявления — дизели и гибриды с розеткой, их лучше пропускать.",
+  complaints:["Дорого для своего размера","Жёсткая подвеска","Устаревшая мультимедиа до 2020 года","Запчасти по цене BMW","Гибридная версия Cooper SE попадала под отзыв из-за риска возгорания батареи"],
+  repairs:[["Прокладка корпуса масляного фильтра","€300–500"],["Помпа охлаждения","€700–1 000"],["Сцепление или блок робота","€1 500–3 000"]],
+  yes:"Хочется MINI, но нужно место для пассажиров и багажа.",
+  no:"Если важны мягкость хода и экономия на обслуживании.",
+  service:"Как у BMW X1: масло раз в год или каждые 10 000 км, тормозная жидкость раз в 2 года, масло в роботе — примерно раз в 60 тыс. км.",
+  avoid:"Cooper SE ALL4 (гибрид с розеткой) — сложный и дорогой в ремонте. Дизели Cooper D: топливо дороже.",
+  listings:["2018 · 70 000 км · €16 900","2018 · 53 300 км · €17 000","2019 · 64 000 км · €17 900","2019 · 101 000 км · €16 000"]},
+ {id:"audi-q2",accel:8.5,accelText:"1.5 TFSI — 8,5 с, слабая 1.0 — около 10 с",brand:"Audi",model:"Q2",gen:"1-е поколение",body:"suv",fuel:"Бензин",ft:"petrol",years:"2019–2023",pmin:15900,pmax:21000,fit:"in",city:7.2,hwy:5.9,co2:125,rel:3.5,svc:[400,650],
+  gb:"bad",gbText:"Робот с «сухим» сцеплением — самый капризный вариант для пробок и жары.",
+  scores:{rel:3.5,cost:4,hwy:3,space:2,city:5},
+  verdict:"Самые свежие машины за эти деньги: 2021–2023 годы стоят €18,5–21k. Компактный, удобный в городе, с качеством Audi.",
+  hard:"Коробка. У бензиновых версий капризный робот: в пробках и жаре он изнашивается быстрее, ремонт €1 500–2 500. И почти половина объявлений — дизели.",
+  complaints:["Тесно сзади, небольшой багажник","Коробка подёргивается на малой скорости","Жёсткая подвеска на больших дисках","Простой пластик в салоне за такие деньги","У ранних моторов 1.5 бывают провалы при разгоне (лечится обновлением программы)"],
+  repairs:[["Блок управления коробкой","€1 500–2 500"],["Сцепление робота","€1 200–1 800"],["Корпус термостата (течь)","€300–500"]],
+  yes:"Город, нужна свежая машина 2021–2023 года с высокой посадкой.",
+  no:"Каждый день плотные пробки или часто сзади взрослые пассажиры.",
+  service:"Масло раз в год, обновление программы коробки и мотора у дилера. У свежих машин может оставаться заводская гарантия — проверьте.",
+  avoid:"Дизель, если не ездите много по трассе, и машины, у которых коробка дёргается на тест-драйве.",
+  listings:["2019 · 145 300 км · €15 900","2021 · 70 000 км · €18 500","2023 · 25 000 км · €19 900","2022 · 48 500 км · €21 000 (дизель)"]},
+ {id:"audi-q3",accel:9.2,accelText:"1.4 и 1.5 TFSI — около 9 с",brand:"Audi",model:"Q3",gen:"Старое (до 2018) и новое поколение",body:"suv",fuel:"Бензин",ft:"petrol",years:"2017–2019",pmin:15500,pmax:22000,fit:"edge",city:8.3,hwy:6.6,co2:140,rel:3.5,svc:[450,700],
+  gb:"mixed",gbText:"У старого поколения бывает и автомат, и робот. У нового — робот.",
+  scores:{rel:3.5,cost:3,hwy:4,space:4,city:4},
+  verdict:"Кроссовер побольше Q2, просторный и комфортный на трассе. Но цены разделились на два поколения, и €20k попадает как раз между ними.",
+  hard:"Провал в ценах. Старый Q3 до 2018 года стоит €11–15,5k, но внутри устарел. Новый начинается примерно от €22k. Хороших вариантов ровно в бюджете мало.",
+  complaints:["Старое поколение: устаревший салон и мультимедиа","Расход в городе 8–9 л на 100 км","Робот подёргивается в пробках","Новое поколение на верхней границе бюджета и выше"],
+  repairs:[["Блок управления коробкой","€1 500–2 500"],["Корпус термостата (течь)","€300–500"],["Подвеска на пробеге 120+ тыс. км","€600–1 200"]],
+  yes:"Нужен кроссовер побольше Q2, и вы готовы поискать или немного доплатить.",
+  no:"Бюджет жёстко €20k, а хочется свежий салон.",
+  service:"Масло раз в год, свечи и фильтры по графику, обслуживание коробки примерно раз в 60 тыс. км.",
+  avoid:"Машины без истории обслуживания.",
+  listings:["2017 · 95 000 км · €15 500","2018 · 115 000 км · €15 500","2019 · 114 000 км · €21 900 (новое поколение)"]},
+ {id:"bmw-x4",accel:8.0,accelText:"xDrive20d — 8,0 с, xDrive30d — 5,8 с",brand:"BMW",model:"X4",gen:"1-е поколение",body:"coupe",fuel:"Дизель",ft:"diesel",years:"2014–2015",pmin:15900,pmax:18000,fit:"caveat",city:7.8,hwy:5.9,co2:145,rel:2.5,svc:[700,1100],
+  gb:"good",gbText:"Классический автомат — спокойный. Проблемы у X4 в другом: мотор и полный привод.",
+  scores:{rel:2.5,cost:2,hwy:4,space:3,city:3},
+  verdict:"Влезает в бюджет, но с оговорками. Эффектный силуэт и хорошая управляемость, однако это 11–12-летний дизель с полным приводом: дорогая в обслуживании машина в возрасте крупных ремонтов.",
+  hard:"В бюджете только машины 2014–2015 годов, почти все дизельные и с пробегом 150–200 тыс. км. X4 2016 года уже стоит от €24,8k, второе поколение (с 2018 года) — от €27,5k.",
+  complaints:["Плохой обзор назад из-за скошенной крыши","Багажник и место над головой сзади меньше, чем у обычного кроссовера","Дорогое обслуживание и запчасти","Дизель шумит и не любит короткие поездки по городу","Устаревшие мультимедиа и ассистенты"],
+  repairs:[["Цепь ГРМ у ранних дизелей","€1 500–2 500"],["Сажевый фильтр","€800–2 000"],["Раздатка полного привода","€1 500–2 500"],["Подвеска на большом пробеге","€800–1 500"]],
+  yes:"Очень нравится силуэт купе-кроссовера, и есть запас €1,5–2k на ремонт в первый год.",
+  no:"Нужна предсказуемость расходов и надёжность.",
+  service:"Масло раз в 10 000 км, масло в коробке и раздатке — примерно раз в 60 тыс. км. Регулярно ездить по трассе, чтобы сажевый фильтр очищался. Перед покупкой обязательно проверить по VIN, какой стоит мотор и менялась ли цепь ГРМ.",
+  avoid:"Машины без истории обслуживания и с подозрительно маленьким для 12 лет пробегом: например, 66 500 км за €18 000 — сначала проверить по документам. Машины с ошибками двигателя или полного привода.",
+  listings:["2014 · 66 500 км · €18 000 (пробег проверить)","2015 · 150 000 км · €17 500","2014 · 185 000 км · €15 900","2014 · 208 000 км · €15 999","2016 · 156 000 км · €24 800 (выше бюджета)"]},
+ {id:"bmw-x3",accel:8.0,accelText:"xDrive20d — 8,0 с, xDrive20i — 8,3 с",brand:"BMW",model:"X3",gen:"G01, 3-е поколение",body:"suv",fuel:"Дизель",ft:"diesel",years:"2018–2019",pmin:19500,pmax:24000,fit:"edge",city:8.0,hwy:5.8,co2:135,rel:3.5,svc:[650,1000],
+  gb:"good",gbText:"Классический автомат ZF — один из самых надёжных.",
+  scores:{rel:3.5,cost:2,hwy:5,space:5,city:3},
+  verdict:"Самый просторный и комфортный на трассе кроссовер в списке, на класс выше X1. Тихий, устойчивый, с большим багажником.",
+  hard:"Дизель и цена. Почти все X3 на Кипре — дизели, а в бюджет попадают только машины 2018–2019 годов с пробегом 115–130 тыс. км. Свежее стоит от €25–28k. Старое поколение до 2017 года почти не продаётся, а машины 2011–2013 годов слишком старые. Для коротких поездок по городу дизель — худший вариант.",
+  complaints:["Почти все в продаже — дизели","Дорогое обслуживание и запчасти","Жёсткость на run-flat шинах и больших дисках","Крупный для узких улиц Олд Тауна и тесных парковок","Сажевый фильтр забивается при коротких поездках"],
+  repairs:[["Сажевый фильтр или клапан EGR","€800–2 000"],["Раздатка полного привода","€1 500–2 500"],["Прокладки и течи масла","€300–600"],["Шина run-flat, одна","€180–300"]],
+  yes:"Нужна большая машина для трассы, пассажиров и багажа, и вы часто ездите в Никосию.",
+  no:"Ездите в основном коротко по городу: дизель будет мучиться. Тогда лучше X1 на бензине.",
+  service:"Масло раз в год или каждые 10 000 км, масло в коробке и раздатке — примерно раз в 60 тыс. км. Регулярно ездить по трассе от 20 минут подряд, чтобы сажевый фильтр очищался.",
+  avoid:"Дизели без истории обслуживания, машины с ошибками сажевого фильтра или полного привода, бывшие машины проката.",
+  listings:["2019 · 119 000 км · €19 500","2019 · 116 000 км · €23 700","2019 · 130 000 км · €25 000 (выше бюджета)","2020 · 85 000 км · €25 900 (выше бюджета)","2011 · 160 000 км · €9 500 (слишком старая)"]},
+ {id:"audi-a3",accel:8.2,accelText:"1.5 TFSI (35 TFSI) — около 8,2 с",brand:"Audi",model:"A3",gen:"Хэтчбек Sportback и седан, обновлённая версия",body:"hatch",fuel:"Бензин",ft:"petrol",years:"2017–2020",pmin:14500,pmax:17500,fit:"in",city:6.8,hwy:5.4,co2:115,rel:3.5,svc:[400,650],
+  gb:"bad",gbText:"Робот с «сухим» сцеплением — тот же капризный вариант, что у Q2.",
+  scores:{rel:3.5,cost:4,hwy:4,space:2,city:5},
+  verdict:"Тихий, качественный и экономичный хэтчбек. На трассе ведёт себя как машина классом выше, расход 5–6 л.",
+  hard:"Коробка. Как у Q2, здесь капризный робот, а ваши поездки — короткие, по городу и 2–3 раза в день. Это самый тяжёлый для него режим. Брать только с историей обслуживания и без рывков на тест-драйве.",
+  complaints:["Коробка дёргается в пробках и при трогании","Ремонт блока коробки дорогой","У моторов 1.5 2017–2018 годов бывают провалы при разгоне (лечится обновлением программы)","Тесновато сзади","Невысокая посадка — после кроссовера непривычно"],
+  repairs:[["Блок управления коробкой","€1 500–2 500"],["Сцепление робота","€1 200–1 800"],["Корпус термостата (течь)","€300–500"]],
+  yes:"Нужна компактная качественная машина, и вы часто ездите по трассе.",
+  no:"Каждый день пробки и короткие поездки, или хочется высокую посадку.",
+  service:"Масло раз в год или каждые 15 000 км. Проверить, обновлялась ли программа коробки и мотора. Масло в коробке официально «на весь срок», но механики советуют менять примерно раз в 60 тыс. км.",
+  avoid:"Машины, которые дёргаются при трогании или пробуксовывают на первых передачах, и старый мотор 1.4 до 2014 года.",
+  listings:["2016 · 90 000 км · €10 750 (1.4)","2020 · 74 000 км · €16 500","2016 S3 · 55 000 км · €17 900 (спортивная версия)"]},
+ {id:"merc-a",accel:8.4,accelText:"A180 — 8,8 с, A200 — 8,0 с",brand:"Mercedes-Benz",model:"A-класс",gen:"W177, хэтчбек (есть и седан)",body:"hatch",fuel:"Бензин",ft:"petrol",years:"2019–2021",pmin:15500,pmax:22000,fit:"in",city:7.0,hwy:5.6,co2:128,rel:3.5,svc:[450,750],
+  gb:"ok",gbText:"Робот, но с «мокрым» сцеплением — выносливее, чем у Audi. На малой скорости может подёргиваться, часто помогает обновление программы.",
+  scores:{rel:3.5,cost:3,hwy:3,space:2,city:5},
+  verdict:"Самый эффектный салон за эти деньги: два широких экрана и современная мультимедиа. Свежие годы 2019–2021, комфортная подвеска.",
+  hard:"Отзывные кампании и коробка. У машин 2019–2020 годов было несколько отзывов — проверьте по VIN у дилера, что всё сделано. Коробка терпимая, но для частых коротких поездок не идеальная.",
+  complaints:["Подёргивания коробки на малой скорости","Несколько отзывных кампаний в 2019–2020 годах","Шумно от шин на трассе","Дешёвый пластик внизу салона","Тесновато сзади и небольшой багажник"],
+  repairs:[["Обслуживание коробки (масло)","€300–450"],["Утечка масла из трубки турбины (часто по отзыву)","€200–500"],["Аккумулятор 12 В","€180–300"]],
+  yes:"Важны салон, технологии и свежий год выпуска. Много города, вдвоём.",
+  no:"Часто возите пассажиров сзади или много багажа.",
+  service:"ТО раз в год или каждые 15 000 км, без длинных интервалов. Масло в коробке — примерно раз в 60 тыс. км. Независимые сервисы Mercedes заметно дешевле дилера.",
+  avoid:"Машины без подтверждённых отзывных работ и версии с пакетом AMG на больших дисках, если важен мягкий ход.",
+  listings:["2019 · 137 000 км · €15 500","2020 · 78 300 км · €18 500","2019 · 47 000 км · €20 000","2021 · 24 650 км · €20 000","2020 · 40 000 км · €21 900"]},
+ {id:"tesla-3",accel:5.6,accelText:"Standard Range+ — 5,6 с, Long Range — 4,4 с",brand:"Tesla",model:"Model 3",gen:"Standard Range+ или Long Range",body:"sedan",fuel:"Электро",ft:"ev",years:"2019–2021",pmin:19500,pmax:24000,fit:"edge",city:14.5,hwy:17,co2:0,rel:4,svc:[100,250],
+  gb:"none",gbText:"Электромотору коробка не нужна: ломаться нечему.",
+  scores:{rel:4,cost:5,hwy:4,space:3,city:4},
+  verdict:"Самая дешёвая в эксплуатации и самая быстрая машина в списке. Для ваших коротких поездок по городу идеальна: электромотору не нужно прогреваться. Налог €0.",
+  hard:"Зарядка и сервис. Заряжать нужно дома: на вилле понадобится розетка или настенная зарядка. На Кипре нет фирменных быстрых зарядок Tesla и официального сервиса, после ДТП запчасти ждут неделями.",
+  complaints:["Жёсткая и шумная подвеска","Неровная сборка: зазоры, скрипы, отклеивающиеся уплотнители","Всё управление через экран, даже бардачок и зеркала","Скрипят передние рычаги подвески","Долгий кузовной ремонт на Кипре"],
+  repairs:[["Рычаги передней подвески","€400–800"],["Аккумулятор 12 В","€150–300"],["Ручка двери","€150–300"],["Кузовной ремонт после ДТП","долго и дорого"]],
+  yes:"Есть где заряжать на вилле, много коротких поездок по городу и регулярно трасса до Никосии.",
+  no:"Негде заряжать дома или важен мягкий, тихий ход.",
+  service:"Плановых ТО почти нет: салонный фильтр раз в 1–2 года, проверка тормозной жидкости раз в 2 года, обслуживание кондиционера раз в 4–6 лет, перестановка колёс каждые 10–12 тыс. км (шины изнашиваются быстрее). Перед покупкой обязательно проверить состояние батареи.",
+  avoid:"Ранние машины из Японии без европейского разъёма зарядки (CCS2), бывшие такси с пробегом от 150 тыс. км и машины после серьёзных ДТП.",
+  listings:["2020 · 71 000 км · €20 000","2020 · 103 000 км · €19 900","2020 · 104 000 км · €22 900","2021 · 39 405 км · €24 000"]}
 ];
 
+const IKEA_KM = 160, IKEA_HW = 0.85, CITY_MONTH_KM = 850;
 const $ = s => document.querySelector(s);
-const state = {body:"all", brand:"all", sort:"price", hideOver:false, km:20000, hw:50, fuel:1.76, kwh:0.30};
-try{ const saved = JSON.parse(localStorage.getItem("cy-cars")||"null"); if(saved) Object.assign(state, saved); }catch(e){}
-function save(){ try{ localStorage.setItem("cy-cars", JSON.stringify(state)); }catch(e){} }
+const state = {body:"all", hideOver:false, km:18000, hw:45, fuel:1.76, diesel:2.02, kwh:0.30};
+try{ const saved = JSON.parse(localStorage.getItem("cy-cars-v4")||"null"); if(saved) Object.assign(state, saved); }catch(e){}
+function save(){ try{ localStorage.setItem("cy-cars-v4", JSON.stringify(state)); }catch(e){} }
 
 const fmt = n => n.toLocaleString("ru-RU").replace(/ /g," ");
-const fmtDec = n => n.toLocaleString("ru-RU",{minimumFractionDigits:1,maximumFractionDigits:1});
 function tax(co2){
-  if(co2<=0) return 0;
   if(co2<=120) return 0.5*co2;
   if(co2<=150) return 60+3*(co2-120);
   if(co2<=180) return 150+5*(co2-150);
   return Math.min(1500, 300+10*(co2-180));
 }
-function per100(m){
-  const share = state.hw/100;
-  const cons = m.city*(1-share) + m.hwy*share;
-  return cons * (m.unit==="kwh" ? state.kwh : state.fuel);
-}
-function annual(m){
-  const energy = per100(m)*state.km/100;
-  const t = tax(m.co2);
-  const s = (m.svc[0]+m.svc[1])/2;
-  return {energy, tax:t, service:s, total:energy+t+s};
-}
-const BODY = {hatch:"Хэтчбек", sedan:"Седан", suv:"Кроссовер"};
-const POWER = {petrol:"Бензин", hybrid:"Гибрид", ev:"Электро", phev:"PHEV"};
-const FIT = {in:["fit-in","в бюджете"], edge:["fit-edge","на границе"], over:["fit-over","дороже €20k"]};
-const RISK = {low:["risk-low","низкий риск"], mid:["risk-mid","средний риск"], high:["risk-high","высокий риск"]};
-const unitLabel = m => m.unit==="kwh" ? "кВт·ч" : "л";
-
-function relDots(r){
-  let h = '<span class="rel" aria-label="Надёжность '+String(r).replace(".",",")+' из 5">';
-  for(let i=1;i<=5;i++){ h += '<i class="'+(r>=i?"on":(r>=i-0.5?"half":""))+'"></i>'; }
-  return h+'</span>';
-}
-function filtered(){
-  let list = MODELS.filter(m=>{
-    if(state.body==="compact" && !(m.body==="hatch"||m.body==="sedan")) return false;
-    if(state.body==="suv" && m.body!=="suv") return false;
-    if(state.body==="eco" && !(m.power==="hybrid"||m.power==="ev")) return false;
-    if(state.brand!=="all" && m.brand!==state.brand) return false;
-    if(state.hideOver && m.fit==="over") return false;
-    return true;
-  });
-  const key = {price:m=>m.pmin, cost:m=>per100(m), rel:m=>-m.rel}[state.sort];
-  return list.sort((a,b)=>key(a)-key(b) || a.pmin-b.pmin);
-}
+const price = m => m.ft==="diesel" ? state.diesel : m.ft==="ev" ? state.kwh : state.fuel;
+const ikea = m => (m.city*(1-IKEA_HW)+m.hwy*IKEA_HW)*IKEA_KM/100*price(m);
+const cityMonth = m => m.city*CITY_MONTH_KM/100*price(m);
+function annual(m){ const s=state.hw/100; const e=(m.city*(1-s)+m.hwy*s)*state.km/100*price(m); const t=m.ft==="ev"?0:tax(m.co2)+(m.ft==="diesel"?100:0); const sv=(m.svc[0]+m.svc[1])/2; return {e,t,sv,total:e+t+sv}; }
+const BODY = {hatch:"Хэтчбек", suv:"Кроссовер", coupe:"Купе-кроссовер", sedan:"Седан"};
+const FIT = {in:["fit-in","в бюджете"], edge:["fit-edge","на границе"], over:["fit-over","дороже €20k"], caveat:["fit-caveat","с оговорками"]};
+const relWord = r => r>=5?"очень надёжная":r>=4?"надёжная":r>=3.5?"средняя":"ниже среднего";
+const relDot = r => r>=4?"d-good":r>=3.5?"d-warn":"d-bad";
 function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+const taxText = m => m.ft==="ev" ? "€0" : "≈ €"+fmt(Math.round(tax(m.co2)))+(m.ft==="diesel"?" + надбавка":"");
 
+function filtered(){
+  return MODELS.filter(m=>(state.body==="all"||m.body===state.body)&&!(state.hideOver&&m.fit==="over")).sort((a,b)=>a.pmin-b.pmin);
+}
 function render(){
   const list = filtered();
-  $("#count").textContent = list.length + " из " + MODELS.length;
-  $("#tbody").innerHTML = list.length ? list.map(m=>{
-    const [fc,fl] = FIT[m.fit]; const [rc,rl] = RISK[m.gbr];
-    return `<tr>
-      <td><div class="m">${esc(m.brand)} ${esc(m.model)}</div><div class="g">${esc(m.gen)}</div></td>
-      <td><span class="plate num">${m.years}</span></td>
-      <td class="r num">${fmt(m.pmin)}–${fmt(m.pmax)}</td>
-      <td class="r num">${fmtDec(m.city)} ${unitLabel(m)}</td>
-      <td class="r num">${fmtDec(m.hwy)} ${unitLabel(m)}</td>
-      <td class="r num">€${fmtDec(per100(m))}</td>
-      <td class="r num">${m.co2? "≈ €"+fmt(Math.round(tax(m.co2))) : "€0"}</td>
-      <td><span class="${rc}">●</span> <span class="g">${rl}</span></td>
-      <td>${relDots(m.rel)}</td>
-      <td><span class="badge ${fc}">${fl}</span></td>
-    </tr>`;}).join("") : `<tr><td colspan="10" class="g">Под эти фильтры моделей нет. Сбросьте бренд или кузов.</td></tr>`;
+  $("#count").textContent = list.length+" из "+MODELS.length;
+  $("#tbody").innerHTML = list.map(m=>{ const [fc,fl]=FIT[m.fit]; const [gd,gw]=GB[m.gb]; return `<tr>
+    <td><div class="m">${esc(m.brand)} ${esc(m.model)}</div><div class="g">${BODY[m.body]} · ${esc(m.fuel)}</div></td>
+    <td><span class="plate num">${m.years}</span></td>
+    <td class="r"><div class="num nw">€${fmt(m.pmin)}–${fmt(m.pmax)}</div><span class="badge ${fc}">${fl}</span></td>
+    <td class="r"><span class="big num">€${Math.round(ikea(m))}</span></td>
+    <td class="r"><span class="big num">€${Math.round(cityMonth(m))}</span></td>
+    <td class="r num">${taxText(m)}</td>
+    <td><span class="big num">${m.accel.toFixed(1).replace(".",",")} с</span><div class="g">${accelWord(m.accel)}</div></td>
+    <td><span class="word"><span class="dot ${relDot(m.rel)}"></span>${relWord(m.rel)}</span></td>
+    <td><span class="word"><span class="dot ${gd}"></span>${gw}</span></td></tr>`; }).join("") || `<tr><td colspan="9" class="g">Под эти фильтры моделей нет.</td></tr>`;
 
-  $("#cards").innerHTML = list.map(m=>{
-    const [fc,fl] = FIT[m.fit]; const [rc,rl] = RISK[m.gbr];
-    return `<article class="card" id="${m.id}">
-      <div class="card-top">
-        <div class="card-title"><span class="brand">${esc(m.brand)}</span><h3>${esc(m.model)}</h3><span class="gen">${esc(m.gen)}</span></div>
-        <div class="price num">€${fmt(m.pmin)}–${fmt(m.pmax)}<small>по объявлениям</small></div>
+  $("#cards").innerHTML = list.map(m=>{ const [fc,fl]=FIT[m.fit]; const [gd,gw]=GB[m.gb]; return `<article class="card" id="${m.id}">
+    <div class="card-top">
+      <div class="card-title"><span class="brand">${esc(m.brand)}</span><h3>${esc(m.model)}</h3><span class="gen">${esc(m.gen)}</span></div>
+      <div class="price num">€${fmt(m.pmin)}–${fmt(m.pmax)}<small>по объявлениям</small></div>
+    </div>
+    <div class="meta"><span class="plate num">${m.years}</span><span class="tag">${BODY[m.body]}</span><span class="tag">${esc(m.fuel)}</span><span class="badge ${fc}">${fl}</span></div>
+    <p class="verdict">${esc(m.verdict)}</p>
+    <div class="hard"><b>В чём сложность</b>${esc(m.hard)}</div>
+    <div class="quick">
+      <div><span>Съездить в IKEA в Никосии и обратно</span><b>€${Math.round(ikea(m))}</b></div>
+      <div><span>Месяц ваших поездок по Лимасолу</span><b>€${Math.round(cityMonth(m))}</b></div>
+      <div><span>Налог в год</span><b>${taxText(m)}</b></div>
+    </div>
+    <div class="accel">
+      <div class="accel-head"><span>Разгон 0–100 км/ч</span><b>${m.accel.toFixed(1).replace(".",",")} с · ${accelWord(m.accel)}</b></div>
+      <div class="race"><span class="lane">Эта машина</span><span class="track"><span class="car" style="width:${Math.min(100,COROLLA/m.accel*80)}%"></span></span></div>
+      <div class="race"><span class="lane">Corolla</span><span class="track"><span class="car ref" style="width:80%"></span></span></div>
+      <span class="hint">Чем длиннее полоса, тем быстрее разгон. ${accelDiff(m.accel)}. ${esc(m.accelText)}.</span>
+    </div>
+    <p class="gearline"><span class="dot ${gd}"></span><span><b>${m.gb==="none"?"Коробки нет.":"Коробка "+gw+"."}</b> ${esc(m.gbText)}</span></p>
+    <div class="scores" aria-label="Оценки от 1 до 5">${SCORE_LABELS.map(([k,l])=>`<div class="score"><span>${l}</span><span class="score-track"><span class="score-fill" style="width:${m.scores[k]/5*100}%"></span></span><span class="v">${String(m.scores[k]).replace(".",",")}</span></div>`).join("")}</div>
+    <details>
+      <summary>Полный разбор</summary>
+      <div class="detail">
+        <div><h4>На что жалуются владельцы</h4><ol class="complaints">${m.complaints.map(c=>`<li>${esc(c)}</li>`).join("")}</ol></div>
+        <div><h4>Что может сломаться и сколько стоит</h4><div>${m.repairs.map(([a,b])=>`<div class="repair"><span>${esc(a)}</span><span>${b}</span></div>`).join("")}</div></div>
+        <div class="fit2"><div class="yes"><b>Кому подойдёт</b>${esc(m.yes)}</div><div class="no"><b>Кому не подойдёт</b>${esc(m.no)}</div></div>
+        <div><h4>Как обслуживать</h4><p>${esc(m.service)}</p><p class="hint" style="margin-top:4px">Плановое обслуживание в независимом сервисе: примерно €${fmt(m.svc[0])}–${fmt(m.svc[1])} в год.</p></div>
+        <div class="avoid"><h4>Чего избегать</h4><p>${esc(m.avoid)}</p></div>
+        <div><h4>Примеры объявлений</h4><div class="listings">${m.listings.map(l=>`<span>${esc(l)}</span>`).join("")}</div></div>
       </div>
-      <div class="meta"><span class="plate num">${m.years}</span><span class="tag">${BODY[m.body]}</span><span class="tag">${POWER[m.power]}</span><span class="badge ${fc}">${fl}</span></div>
-      <div class="stats">
-        <div class="stat"><span>Город</span><b>${fmtDec(m.city)} ${unitLabel(m)}</b></div>
-        <div class="stat"><span>Трасса</span><b>${fmtDec(m.hwy)} ${unitLabel(m)}</b></div>
-        <div class="stat"><span>Налог/год</span><b>${m.co2? "≈ €"+fmt(Math.round(tax(m.co2))) : "€0"}</b></div>
-        <div class="stat"><span>Надёжность</span><b>${relDots(m.rel)}</b></div>
-      </div>
-      <p class="verdict">${esc(m.verdict)}</p>
-      <p class="gearbox"><b>Коробка:</b> ${esc(m.gb)} · <span class="${rc}">${rl}</span></p>
-      <details>
-        <summary>Владельцы, обслуживание, объявления</summary>
-        <div class="detail">
-          <div class="pc">
-            <div><h4>Плюсы</h4><ul class="plus">${m.pros.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>
-            <div><h4>Минусы</h4><ul class="minus">${m.cons.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>
-          </div>
-          <div><h4>Что пишут владельцы</h4><p>${esc(m.owners)}</p></div>
-          <div><h4>Как обслуживать</h4><p>${esc(m.service)}</p><p class="gearbox" style="margin-top:4px">Ориентир в независимом сервисе: €${fmt(m.svc[0])}–${fmt(m.svc[1])} в год.</p></div>
-          <div class="avoid"><h4>Чего избегать</h4><p>${esc(m.avoid)}</p></div>
-          <div><h4>Примеры объявлений, октябрь 2026</h4><div class="listings">${m.listings.map(l=>`<span>${esc(l)}</span>`).join("")}</div></div>
-        </div>
-      </details>
-    </article>`;}).join("");
-
+    </details>
+  </article>`; }).join("");
   renderBars(list);
 }
 function renderBars(list){
   $("#kmVal").textContent = fmt(state.km)+" км";
   $("#hwVal").textContent = state.hw+"%";
-  const rows = list.map(m=>({m, a:annual(m)})).sort((x,y)=>x.a.total-y.a.total);
+  document.querySelectorAll("#presets .preset").forEach(b=>b.setAttribute("aria-pressed", +b.dataset.km===state.km && +b.dataset.hw===state.hw));
+  const rows = list.map(m=>({m,a:annual(m)})).sort((x,y)=>x.a.total-y.a.total);
   const max = Math.max(1,...rows.map(r=>r.a.total));
-  $("#bars").innerHTML = rows.length ? rows.map(({m,a})=>`
-    <div class="bar-row" title="Топливо €${fmt(Math.round(a.energy))} · налог €${fmt(Math.round(a.tax))} · ТО €${fmt(Math.round(a.service))}">
-      <span class="bar-name">${esc(m.brand)} ${esc(m.model)}</span>
-      <span class="bar-track">
-        <span class="bar-seg seg-energy" style="width:${a.energy/max*100}%"></span>
-        <span class="bar-seg seg-tax" style="width:${a.tax/max*100}%"></span>
-        <span class="bar-seg seg-service" style="width:${a.service/max*100}%"></span>
-      </span>
-      <span class="bar-val">€${fmt(Math.round(a.total))}</span>
-    </div>`).join("") : '<p class="hint">Нет моделей под текущие фильтры.</p>';
+  $("#bars").innerHTML = rows.map(({m,a})=>`<div class="bar-row" title="Топливо €${fmt(Math.round(a.e))} · налог €${fmt(Math.round(a.t))} · обслуживание €${fmt(Math.round(a.sv))}">
+    <span class="bar-name">${esc(m.brand)} ${esc(m.model)}</span>
+    <span class="bar-track"><span class="bar-seg seg-energy" style="width:${a.e/max*100}%"></span><span class="bar-seg seg-tax" style="width:${a.t/max*100}%"></span><span class="bar-seg seg-service" style="width:${a.sv/max*100}%"></span></span>
+    <span class="bar-val"><b>€${fmt(Math.round(a.total))}</b> в год<span>≈ €${fmt(Math.round(a.total/12))} в месяц</span></span></div>`).join("") || '<p class="hint">Нет моделей под текущие фильтры.</p>';
 }
+
+/* mileage checker */
+const NOW = 2026;
+(function(){ const sel=$("#ckYear"); for(let y=2025;y>=2012;y--){ const o=document.createElement("option"); o.value=y; o.textContent=y; if(y===2018) o.selected=true; sel.appendChild(o);} })();
+function check(){
+  const y=parseInt($("#ckYear").value,10), km=parseFloat($("#ckKm").value), out=$("#ckOut");
+  if(isNaN(km)||km<0){ out.className="verdict-pill v-warn"; out.innerHTML="<b>Введите пробег</b>в километрах, например 95000."; return; }
+  const age=Math.max(1,NOW-y), lo=age*12000, hi=age*15000, perYear=Math.round(km/age);
+  let cls="v-good", title="Пробег в норме", txt=`Для машины ${y} года нормально ${fmt(lo)}–${fmt(hi)} км. Здесь около ${fmt(perYear)} км в год.`;
+  if(km<age*7000){ cls="v-bad"; title="Подозрительно мало"; txt+=" Для привезённой машины это повод проверить пробег по документам."; }
+  else if(km<lo){ cls="v-warn"; title="Меньше нормы"; txt+=" Хорошо, если пробег подтверждён историей обслуживания."; }
+  else if(km>age*22000){ cls="v-bad"; title="Очень много"; txt+=" Возможно, машина работала в такси или каршеринге."; }
+  else if(km>hi){ cls="v-warn"; title="Больше нормы"; txt+=" Нужна история обслуживания и скидка."; }
+  if(km>200000){ cls="v-bad"; title="Больше 200 тыс. км"; txt+=" Лучше пропустить, кроме Lexus-гибрида с историей."; }
+  if(y<2014){ cls="v-bad"; title="Слишком старая"; txt="Машины до 2014 года в этом гайде не рассматриваем: ремонт съест экономию."; }
+  out.className="verdict-pill "+cls; out.innerHTML=`<b>${title}</b>${txt}`;
+}
+$("#ckYear").addEventListener("change",check); $("#ckKm").addEventListener("input",check); check();
 
 function syncControls(){
   document.querySelectorAll("#f-body .chip").forEach(b=>b.setAttribute("aria-pressed", b.dataset.v===state.body));
-  $("#brand").value = state.brand; $("#sort").value = state.sort; $("#hideOver").checked = state.hideOver;
-  $("#km").value = state.km; $("#hw").value = state.hw; $("#fuel").value = state.fuel; $("#kwh").value = state.kwh;
+  $("#hideOver").checked=state.hideOver; $("#km").value=state.km; $("#hw").value=state.hw; $("#fuel").value=state.fuel; $("#diesel").value=state.diesel; $("#kwh").value=state.kwh;
 }
 document.querySelectorAll("#f-body .chip").forEach(b=>b.addEventListener("click",()=>{state.body=b.dataset.v; syncControls(); render(); save();}));
-$("#brand").addEventListener("change",e=>{state.brand=e.target.value; render(); save();});
-$("#sort").addEventListener("change",e=>{state.sort=e.target.value; render(); save();});
+document.querySelectorAll("#presets .preset").forEach(b=>b.addEventListener("click",()=>{state.km=+b.dataset.km; state.hw=+b.dataset.hw; syncControls(); render(); save();}));
 $("#hideOver").addEventListener("change",e=>{state.hideOver=e.target.checked; render(); save();});
-[["km","km"],["hw","hw"],["fuel","fuel"],["kwh","kwh"]].forEach(([id,k])=>{
-  $("#"+id).addEventListener("input",e=>{ const v=parseFloat(e.target.value); if(!isNaN(v)&&v>0||(k==="hw"&&v===0)){ state[k]=v; render(); save(); } });
-});
+["km","hw","fuel","diesel","kwh"].forEach(k=>$("#"+k).addEventListener("input",e=>{ const v=parseFloat(e.target.value); if(!isNaN(v)&&(v>0||k==="hw")){ state[k]=v; render(); save(); } }));
 syncControls(); render();
 </script>
 </body>
